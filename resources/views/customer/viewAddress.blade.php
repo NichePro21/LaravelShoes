@@ -18,6 +18,13 @@
     <div class="container pb-5 mb-2 mb-md-4">
     @endsection
     @section('content')
+    <?php 
+    $message = Session::get('message');
+        if($message){
+     echo '<p class="text-alert-danger">'.$message.'</p>' ;
+            Session::put('message',null);
+    }
+    ?>
     <div class="row">
     <div class="col-sm-6 mb-4 mb-sm-0">
     <div class="border rounded-lg p-4 h-100">
@@ -28,7 +35,7 @@
     <div>abcxyz abcxyz<br>abcxyz<br>abcxyz, CA 85744</div>
     </li>
     <li class="woocommerce-customer-details--edit pt-2">
-    <a class="btn btn-outline-primary btn-sm" href="https://cartzilla.madrasthemes.com/my-account/edit-address/billing/">
+    <a class="btn btn-outline-primary btn-sm" href="/my-account/edit-address/billing/">
     <i class="czi-edit mr-1"></i>
     Edit </a>
     </li>
@@ -44,7 +51,7 @@
     <div>abcxyz abcxyz<br>abcxyz<br>abcxyz, CA 85744</div>
     </li>
     <li class="woocommerce-customer-details--edit pt-2">
-    <a class="btn btn-outline-primary btn-sm" href="https://cartzilla.madrasthemes.com/my-account/edit-address/shipping/">
+    <a class="btn btn-outline-primary btn-sm" href="/my-account/edit-address/shipping/">
     <i class="czi-edit mr-1"></i>
     Edit </a>
     </li>

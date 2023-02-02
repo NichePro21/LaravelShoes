@@ -388,7 +388,7 @@
                                     <li
                                         class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders">
                                         <a class="dropdown-item d-flex align-items-center"
-                                            href="/my-account//orders/">
+                                            href="/my-account/orders/">
                                             <i class="czi-bag opacity-60 mt-n1 mr-2"></i>
                                             Orders <span class="font-size-xs text-muted ml-auto"></span>
                                         </a>
@@ -459,6 +459,7 @@
         @yield('header')
         <div class="container pb-5 mb-2 mb-md-3">
             @foreach ($Name_by_id as $key => $value)
+            
                 <div class="row">
                     <aside class="col-lg-4 pt-4 pt-lg-0">
                         <div class="cz-sidebar-static rounded-lg box-shadow-lg px-0 pb-0 mb-5 mb-lg-0">
@@ -491,7 +492,7 @@
                                         <a href="/my-account/orders/"
                                             class="nav-link-style d-flex align-items-center px-4 py-3">
                                             <i class="czi-bag align-middle opacity-60 mr-2"></i>
-                                            Orders <span class="font-size-sm text-muted ml-auto">0</span>
+                                            Orders <span class="font-size-sm text-muted ml-auto"></span>
                                         </a>
                                     </li>
                                     <li

@@ -18,48 +18,52 @@
     <div class="container pb-5 mb-2 mb-md-4">
     @endsection
     @section('content')
-        <div class="table-responsive font-size-md">
-            <table
-                class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table table table-hover mb-0">
-                <thead>
-                    <tr>
-                        <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-number">
-                            <span class="nobr">Order</span>
-                        </th>
-                        <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-date">
-                            <span class="nobr">Date</span>
-                        </th>
-                        <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-status">
-                            <span class="nobr">Status</span>
-                        </th>
-                        <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-total">
-                            <span class="nobr">Total</span>
-                        </th>
-                        <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-actions">
-                            <span class="nobr">Actions</span>
-                        </th>
-                    </tr>
-                </thead>
+  
+                @if (count($AllOrderById))
+                <div class="table-responsive font-size-md">
+                    <table
+                        class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-number">
+                                    <span class="nobr">Order</span>
+                                </th>
+                                <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-date">
+                                    <span class="nobr">Date</span>
+                                </th>
+                                <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-status">
+                                    <span class="nobr">Status</span>
+                                </th>
+                                <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-total">
+                                    <span class="nobr">Total</span>
+                                </th>
+                                <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-actions">
+                                    <span class="nobr">Actions</span>
+                                </th>
+                            </tr>
+                        </thead>
+                @foreach ($AllOrderById as $key => $value)
+            
                 <tbody>
                     <tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-on-hold order">
                         <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-number align-middle"
                             data-title="Order">
                             <a href="https://cartzilla.madrasthemes.com/my-account/view-order/1985/"
                                 class="nav-link-style font-weight-medium">
-                                #1985 </a>
+                                #{{$value->OrderNo}} </a>
                         </td>
                         <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-date align-middle"
                             data-title="Date">
-                            <time datetime="2023-01-26T19:11:49+00:00">Jan 26, 23</time>
+                            <time datetime="2023-01-26T19:11:49+00:00">{{ date('d/m/y', strtotime($value->created_at)) }}</time>
                         </td>
                         <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-status align-middle"
                             data-title="Status">
-                            <span class="badge badge-on-hold">On hold</span>
+                            <span class="badge badge-on-hold">{{$value->order_status}}</span>
                         </td>
                         <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-total align-middle"
                             data-title="Total">
                             <span class="woocommerce-Price-amount amount"><span
-                                    class="woocommerce-Price-currencySymbol">$</span>116.<small>00</small></span> for 1 item
+                                    class="woocommerce-Price-currencySymbol">$</span>{{$value->order_total}}<small> VND</small></span> 
                         </td>
                         <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-actions align-middle"
                             data-title="Actions">
@@ -71,6 +75,12 @@
                         </td>
                     </tr>
                 </tbody>
+                @endforeach
+                @else
+                <h4 style="text-align:center">No Have Order</h4>
+                @endif
+
             </table>
         </div>
+       
     @endsection
