@@ -398,7 +398,7 @@
                                         <a class="dropdown-item d-flex align-items-center"
                                             href="/my-account/edit-address/">
                                             <i class="czi-location opacity-60 mt-n1 mr-2"></i>
-                                            Addresses </a>
+                                            Address </a>
                                     </li>
                                     <li
                                         class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-account">
@@ -488,7 +488,7 @@
                                             Dashboard </a>
                                     </li>
                                     <li
-                                        class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders is-active border-top mb-0">
+                                        class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders border-top mb-0">
                                         <a href="/my-account/orders/"
                                             class="nav-link-style d-flex align-items-center px-4 py-3">
                                             <i class="czi-bag align-middle opacity-60 mr-2"></i>

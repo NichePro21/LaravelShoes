@@ -16,44 +16,63 @@
         <h2 class="h6 pt-1 pb-3 mb-3 border-bottom">Shipping address</h2>
         <form action="{{URL::to('/save-checkout-customer')}}" method="post">
           {{csrf_field()}}
+          @foreach($shippingAddress as $key => $value)
         <div class="row">
           <div class="col-sm-6">
             <div class="mb-3">
-              <label class="form-label" for="checkout-fn">Full Name</label>
-              <input class="form-control" type="text" name="shipping_name">
+              
+              <label class="form-label" for="checkout-fn">Họ Tên</label>
+              <input class="form-control" type="text" name="shipping_name" value="{{$value->shipping_name}}" required>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <div class="mb-3">
-              <label class="form-label" for="checkout-email">E-mail Address</label>
-              <input class="form-control" type="email" name="shipping_email">
+              <label class="form-label" for="checkout-address-1">Địa Chỉ</label>
+              <input class="form-control" type="text" name="shipping_address" value="{{$value->shipping_address}}" required>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <div class="mb-3">
-              <label class="form-label" for="checkout-phone">Phone Number</label>
-              <input class="form-control" type="text" name="shipping_phone">
+              <label class="form-label" for="checkout-address-1">Phường/Xã</label>
+              <input class="form-control" type="text" name="shipping_ward" value="{{$value->shipping_ward}}" required>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <div class="mb-3">
-              <label class="form-label" for="checkout-address-1">Address 1</label>
-              <input class="form-control" type="text" name="shipping_address"">
+              <label class="form-label" for="checkout-address-1">Thành Phố</label>
+              <input class="form-control" type="text" name="shipping_city" value="{{$value->shipping_city}}" required>
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="mb-3">
+              <label class="form-label" for="checkout-phone">Số Điện Thoại</label>
+              <input class="form-control" type="text" name="shipping_phone" value="{{$value->shipping_phone}}" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="mb-3">
+              <label class="form-label" for="checkout-phone">Email</label>
+              <input class="form-control" type="text" name="shipping_email" value="{{$value->shipping_email}}" required>
+            </div>
+          </div>
+        </div>
+        @endforeach
         <!-- Navigation (desktop)-->
         <div class="d-none d-lg-flex pt-4 mt-3">
           <div class="w-50 pe-3"><a class="btn btn-secondary d-block w-100" href="/show-cart"><i class="ci-arrow-left mt-sm-0 me-1"></i><span class="d-none d-sm-inline">Back to Cart</span><span class="d-inline d-sm-none">Back</span></a></div>
           <div class="w-50 ps-2"><input class="btn btn-primary d-block w-100" type="submit" name="update_qty" value="Process to Order" class="btn btn-default btn-sm"></div>
         </div>
-        
+       
       </form>
       </section>
       <!-- Sidebar-->

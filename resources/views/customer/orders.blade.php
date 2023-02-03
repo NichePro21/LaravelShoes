@@ -48,7 +48,7 @@
                     <tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-on-hold order">
                         <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-number align-middle"
                             data-title="Order">
-                            <a href="https://cartzilla.madrasthemes.com/my-account/view-order/1985/"
+                            <a href="/my-account/view-order/{{$value->OrderNo}}/"
                                 class="nav-link-style font-weight-medium">
                                 #{{$value->OrderNo}} </a>
                         </td>
@@ -67,7 +67,7 @@
                         </td>
                         <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-actions align-middle"
                             data-title="Actions">
-                            <a href="https://cartzilla.madrasthemes.com/my-account/view-order/1985/"
+                            <a href="/my-account/view-order/{{$value->OrderNo}}/"
                                 class="btn btn-outline-secondary btn-icon btn-sm mr-1 my-1" data-toggle="tooltip"
                                 title="" data-original-title="View">
                                 <i class="czi-eye"></i>

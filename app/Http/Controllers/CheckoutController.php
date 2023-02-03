@@ -33,7 +33,6 @@ class CheckoutController extends Controller
         $data = array();
         $data['CName'] = $request->CName;
         $data['CPhone'] = $request->CPhone;
-        $data['CAdd'] = $request->CAdd;
         $data['CEmail'] = $request->CEmail;
         $data['Cusername'] = $request->Cusername;
         $data['CPass'] = md5($request->CPass);
@@ -42,13 +41,16 @@ class CheckoutController extends Controller
 
         Session::put('CID', $customer_id);
         Session::put('CName', $request->Cusername);
-        return Redirect::to('/checkout')->with('category', $cate_product)->with('brand', $brand_product);
+        return Redirect::to('/my-account')->with('category', $cate_product)->with('brand', $brand_product);
     }
     public function checkout()
     {
+        $value = Session::get('CID');
         $cate_product = DB::table('tbl_categories')->orderby('CatID', 'desc')->get();
         $brand_product = DB::table('tbl_brand')->orderby('BID', 'desc')->get();
-        return view('pages.checkout.show_checkout')->with('category', $cate_product)->with('brand', $brand_product);
+        $shippingAddress = DB::table('tbl_shipping')->where('tbl_shipping.CID', $value)->get();
+       
+        return view('pages.checkout.show_checkout')->with('category', $cate_product)->with('brand', $brand_product)->with('shippingAddress', $shippingAddress);
     }
     public function save_checkout_customer(Request $request)
     {
@@ -56,11 +58,14 @@ class CheckoutController extends Controller
         $brand_product = DB::table('tbl_brand')->orderby('BID', 'desc')->get();
         $data = array();
         $data['shipping_name'] = $request->shipping_name;
-        $data['shipping_email'] = $request->shipping_email;
+        $data['shipping_city'] = $request->shipping_city;
+        $data['shipping_ward'] = $request->shipping_ward;
         $data['shipping_phone'] = $request->shipping_phone;
         $data['shipping_address'] = $request->shipping_address;
-
-        $shipping_id = DB::table('tbl_shipping')->insertGetId($data);
+        $data['CID'] = Session::get('CID');
+        $data['shipping_email'] = $request->shipping_email;
+        
+        $shipping_id = DB::table('tbl_shipping')->update($data);
 
         Session::put('shipping_id', $shipping_id);
 

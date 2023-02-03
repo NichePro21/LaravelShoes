@@ -101,10 +101,11 @@ Route::get('/my-account', 'CustomerController@index');
 Route::get('/my-account/orders', 'CustomerController@viewAllOrder');
 Route::get('/my-account/edit-address', 'CustomerController@viewAddress');
 Route::get('/my-account/edit-account', 'CustomerController@ViewDetails');
-Route::get('/my-account/edit-address/billing/', 'CustomerController@editBilling');
-Route::post('/my-account/save-address/billing/', 'CustomerController@saveBilling');
 Route::get('/my-account/edit-address/shipping/', 'CustomerController@editShipping');
+Route::get('/my-account/add-address/shipping/', 'CustomerController@addShipping');
 Route::post('/my-account/save-address/shipping/', 'CustomerController@saveShipping');
+Route::get('/my-account/view-order/{OrderNo}', 'CustomerController@viewOrderById');
+
 //Order Detail Employee
 Route::get('/check-order-list','CheckoutController@order_details');
 Route::get('/view-order/{orderId}', 'CheckoutController@ViewOrder');
