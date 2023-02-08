@@ -169,4 +169,8 @@ class CheckoutController extends Controller
         $manager_order_by_id = view('staff.order_detail')->with('manager_order_by_id',$OrderById);
         return view('staff_layout')->with('staff.order_detail',$manager_order_by_id);
     }
+    public function cart_add(Request $request){
+     $request->all();
+        dd($request);
+    }
 }

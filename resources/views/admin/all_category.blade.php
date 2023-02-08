@@ -24,7 +24,8 @@
               </th>
               <th>ID</th>
               <th>Tên danh mục</th>
-              
+              <th>slug</th>
+              <th>Parent</th>
               <th>Edit</th>
               <th style="width:30px;"></th>
             </tr>
@@ -34,7 +35,10 @@
             <tr>
               <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
               <td>{{$cate_pro->CatID}}</td>
-              <td>{{$cate_pro->CateName}}</td>
+              <td>{{$cate_pro->category_name}}</td>
+              <td>{{$cate_pro->slug_category_product}}</td>
+              <td>{{$cate_pro->category_parent}}</td>
+              
              
               <td>
                 <a href="{{URL::to('/edit-category/'.$cate_pro->CatID)}}" class="editstyling active">

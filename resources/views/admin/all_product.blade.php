@@ -3,7 +3,7 @@
 <div class="table-agile-info">
     <div class="panel panel-default">
       <div class="panel-heading">
-        Liệt kê Sản Phẩm
+        All Product
       </div>
       
       <div class="table-responsive">
@@ -36,14 +36,14 @@
             <tr>
               
               <td>{{$product_pro->PID}}</td>
-              <td>{{$product_pro->BName}}</td>
-              <td>{{$product_pro->CateName}}</td>
-              <td>{{$product_pro->PName}}</td>
-              <td>{{$product_pro->PCost}}</td>
-              <td>{{$product_pro->PPrice}}</td>
-              <td>{{$product_pro->PSize}}</td>
-              <td>{{$product_pro->PStock}}</td>
-              <td><img src="{{URL::to('/public/uploads/product/')}}/{{$product_pro->PPhoto}}" height="100" width="100" alt=""></td>
+              <td>{{$product_pro->brand_name}}</td>
+              <td>{{$product_pro->category_name}}</td>
+              <td>{{$product_pro->product_name}}</td>
+              <td>{{$product_pro->price_cost}}</td>
+              <td>{{$product_pro->product_price}}</td>
+              <td>{{$product_pro->product_size}}</td>
+              <td>{{$product_pro->color_quantity}}</td>
+              <td><img src="{{URL::to('/public/uploads/product')}}/{{ $product_pro->product_image }}" height="100" width="100" alt=""></td>
               
              
               

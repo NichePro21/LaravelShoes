@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use App\Brand;
+use App\Product;
 session_start();
 
 class brandController extends Controller
@@ -32,10 +34,12 @@ class brandController extends Controller
     }
 
     public function save_brand(Request $request){
-       $data = array();
-        $data['BName'] = $request->brand_name;
-        $data['BStatus'] = $request->BStatus;
-
+      
+       	$data = array();
+    	$data['brand_name'] = $request->brand_product_name;
+        $data['brand_slug'] = $request->brand_slug;
+    	$data['brand_desc'] = $request->brand_product_desc;
+    	$data['brand_status'] = $request->brand_product_status;
         DB::table('tbl_brand')->insert($data);
         Session::put('message','Thêm brand Thành Công!');
         return Redirect::to('all-brand');
@@ -70,15 +74,15 @@ class brandController extends Controller
         return Redirect::to('all-brand');
     }
     //end admin function page
-    public function show_brand_home($BID){
+    public function show_brand_home(Request $request, $brand_slug){
 
-        $cate_product = DB::table('tbl_categories')->orderby('CatID','desc')->get();
-        $brand_product = DB::table('tbl_brand')->orderby('BID','desc')->get();
+        $cate_product = DB::table('tbl_categories')->orderby('CatID','asc')->get();
+        $brand_product = DB::table('tbl_brand')->where('brand_status','0')->orderby('BID','Asc')->get(); 
 
-        $brand_by_id = DB::table('tbl_product')
-        ->join('tbl_brand','tbl_product.BID','=','tbl_brand.BID')
-        ->where('tbl_product.BID',$BID)->get();
-        $brand_name = DB::table('tbl_brand')->where('tbl_brand.BID',$BID)->limit(1)->get();
-        return view('pages.sanpham.show_brand')->with('category',$cate_product)->with('brand',$brand_product)->with('brand_by_id',$brand_by_id)->with('brand_name',$brand_name);
+        $brand_by_id = DB::table('tbl_product')->join('tbl_brand','tbl_product.BID','=','tbl_brand.BID')->where('tbl_brand.brand_slug',$brand_slug)->paginate(6);
+        $brand_name = DB::table('tbl_brand')->where('tbl_brand.brand_slug',$brand_slug)->limit(1)->get();
+        //print_r($brand_by_id);
+        return view('pages.sanpham.show_brand')->with('category',$cate_product)->with('brand_product',$brand_product)->with('brand_by_id',$brand_by_id)->with('brand_name',$brand_name);
     }
+    
 }

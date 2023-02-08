@@ -57,4 +57,47 @@ class CartController extends Controller
         return Redirect::to('/show-cart');
 
     }
+    public function add_cart_ajax(Request $request){
+        // Session::forget('cart');
+    $data = $request->all();
+    dd($data);
+    $session_id = substr(md5(microtime()),rand(0,26),5);
+    $cart = Session::get('cart');
+        
+    if($cart==true){
+        $is_avaiable = 0;
+        foreach($cart as $key => $val){
+            if($val['product_id']==$data['cart_product_id']){
+                $is_avaiable++;
+            }
+        }
+        if($is_avaiable == 0){
+            $cart[] = array(
+                'session_id' => $session_id,
+                'product_name' => $data['cart_product_name'],
+                'PID' => $data['cart_product_id'],
+                'product_image' => $data['cart_product_image'],
+                'product_quantity' => $data['cart_product_quantity'],
+                'product_qty' => $data['cart_product_qty'],
+                'product_price' => $data['cart_product_price'],
+            );
+            Session::put('cart',$cart);
+        }
+    }else{
+        $cart[] = array(
+            'session_id' => $session_id,
+            'product_name' => $data['cart_product_name'],
+            'PID' => $data['cart_product_id'],
+            'product_image' => $data['cart_product_image'],
+            'product_quantity' => $data['cart_product_quantity'],
+            'product_qty' => $data['cart_product_qty'],
+            'product_price' => $data['cart_product_price'],
+
+        );
+        Session::put('cart',$cart);
+    }
+
+    Session::save();
+
+}   
 }

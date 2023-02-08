@@ -15,7 +15,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{URL::to('public/backend/plugins/images/favicon.png')}}">
-    <title>Ample Admin Template - The Ultimate Multipurpose admin template</title>
+    <title>Admin Layout</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{URL::to('public/backend/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- This is Sidebar menu CSS -->
@@ -25,7 +25,7 @@
     <!-- This is a Custom CSS -->
     <link href="{{URL::to('public/backend/css/style.css')}}" rel="stylesheet">
     <link href="{{URL::to('public/backend/css/colors/blue-dark.css')}}" id="theme" rel="stylesheet">
-    
+    <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
 </head>
 
 <body class="fix-sidebar">
@@ -127,12 +127,23 @@
                         </ul>
                     </li>
                     <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Product<span class="fa arrow"></span>
-                        <span class="label label-rouded label-purple pull-right">2</span></span></a>
+                        <span class="label label-rouded label-purple pull-right">3</span></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="{{URL::to('/add-product')}}"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Add New Product</span></a></li>
                             <li><a href="{{URL::to('/all-product')}}"><i class="fa-fw">S</i><span class="hide-menu"> All Product</span></a></li>
-                        </ul>
+                            {{-- <li><a href="{{URL::to('/add-color')}}"><i class="fa-fw">S</i><span class="hide-menu"> Add Color</span></a></li>
+                            <li><a href="{{URL::to('/all-color')}}"><i class="fa-fw">S</i><span class="hide-menu"> All Color</span></a></li>
+                       --}} </ul> 
                     </li>
+
+                    <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Color<span class="fa arrow"></span>
+                        <span class="label label-rouded label-purple pull-right">2</span></span></a>
+                        <ul class="nav nav-second-level">
+                           <li><a href="{{URL::to('/add-color')}}"><i class="fa-fw">@</i><span class="hide-menu"> Add Color</span></a></li>
+                            <li><a href="{{URL::to('/all-color')}}"><i class="fa-fw">@</i><span class="hide-menu"> All Color</span></a></li>
+                       </ul> 
+                    </li>
+
                     <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Orders<span class="fa arrow"></span>
                         <span class="label label-rouded label-purple pull-right">2</span></span></a>
                         <ul class="nav nav-second-level">
@@ -166,6 +177,44 @@
     <script src="{{URL::to('public/backend/js/waves.js')}}"></script>
     <!-- Custom Theme JavaScript -->
     <script src="{{URL::to('public/backend/js/custom.js')}}"></script>
+    <script type="text/javascript">
+ 
+        function ChangeToSlug()
+            {
+                var slug;
+             
+                //Lấy text từ thẻ input title 
+                slug = document.getElementById("slug").value;
+                slug = slug.toLowerCase();
+                //Đổi ký tự có dấu thành không dấu
+                    slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
+                    slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
+                    slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+                    slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
+                    slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+                    slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
+                    slug = slug.replace(/đ/gi, 'd');
+                    //Xóa các ký tự đặt biệt
+                    slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
+                    //Đổi khoảng trắng thành ký tự gạch ngang
+                    slug = slug.replace(/ /gi, "-");
+                    //Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
+                    //Phòng trường hợp người nhập vào quá nhiều ký tự trắng
+                    slug = slug.replace(/\-\-\-\-\-/gi, '-');
+                    slug = slug.replace(/\-\-\-\-/gi, '-');
+                    slug = slug.replace(/\-\-\-/gi, '-');
+                    slug = slug.replace(/\-\-/gi, '-');
+                    //Xóa các ký tự gạch ngang ở đầu và cuối
+                    slug = '@' + slug + '@';
+                    slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+                    //In slug ra textbox có id “slug”
+                document.getElementById('convert_slug').value = slug;
+            }
+             
+    
+       
+       
+    </script>
 </body>
 
 </html>

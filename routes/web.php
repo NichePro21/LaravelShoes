@@ -12,10 +12,10 @@
 */
 use Illuminate\Support\Facades\Route;
 //frontend
-Route::get('/','HomeController@index');
+Route::get('/','HomeController@index2');
 
-Route::get('/product/{product_id}', 'ProductController@details_product');
-Route::get('/category/{category_id}','CategoryProduct@show_category_home');
+Route::get('/product/{product_slug}', 'ProductController@details_product');
+Route::get('/category/{slug_category_product}','CategoryProduct@show_category_home');
 
 //backend
 //Employee
@@ -42,6 +42,11 @@ Route::get('/delete-brand/{brand_id}', 'brandController@delete_brand');
 Route::get('/all-brand', 'brandController@all_brand');
 Route::get('/unactive-brand/{brand_id}', 'brandController@unactive_brand');
 Route::get('/active-brand/{brand_id}', 'brandController@active_brand');
+Route::get('/brand/{brand_slug}', 'brandController@show_brand_home');
+
+Route::post('/product-tabs', 'ProductController@product_tabs');
+
+//
 
 Route::post('/save-brand', 'brandController@save_brand');
 Route::post('/update-brand/{brand_id}', 'brandController@update_brand');
@@ -96,6 +101,7 @@ Route::get('/checkout','CheckoutController@checkout');
 Route::post('/save-checkout-customer','CheckoutController@save_checkout_customer');
 Route::get('/payment','CheckoutController@payment');
 Route::post('/order-place','CheckoutController@OrderPlace');
+Route::post('/add-cart-ajax','CartController@add_cart_ajax');
 //customer
 Route::get('/my-account', 'CustomerController@index');
 Route::get('/my-account/orders', 'CustomerController@viewAllOrder');

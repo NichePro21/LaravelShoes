@@ -20,47 +20,81 @@
                         <div class="position-center">
                             <form role="form" action="{{URL::to('/save-product')}}" method="post" enctype="multipart/form-data">
                                 {{csrf_field()}}
-                            <div class="form-group">
-                                <label for="exampleInputFile">Brand</label>
-                                    <select name="BID" class="form-control input-lg m-bot15">
-                                        @foreach ($tag_product as $key => $tag)
-                                        <option value="{{$tag->BID}}">{{$tag->BName}}</option>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Danh mục sản phẩm</label>
+                                      <select name="product_cate" class="form-control input-sm m-bot15">
+                                        @foreach($cate_product as $key => $cate)
+                                            @if($cate->category_parent==0)
+                                                <option style="font-size: 15px" value="{{$cate->CatID}}">{{$cate->category_name}}</option>
+                                                @foreach($cate_product as $key => $cate_sub)
+                                                    @if($cate_sub->category_parent!=0 && $cate_sub->category_parent==$cate->CatID)
+                                                    <option style="color: red;font-size: 15px" value="{{$cate_sub->CatID}}">---{{$cate_sub->category_name}}</option>   
+                                                    @endif
+                                                @endforeach
+
+                                            @endif
                                         @endforeach
+                                            
                                     </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputFile">Danh Mục</label>
-                                    <select name="CatID" class="form-control input-lg m-bot15">
-                                        @foreach ($cate_product as $key => $cate)
-                                        <option value="{{$cate->CatID}}">{{$cate->CateName}}</option>
+                                </div>
+                               
+                                 <div class="form-group">
+                                    <label for="exampleInputPassword1">Thương hiệu</label>
+                                      <select name="product_brand" class="form-control input-sm m-bot15">
+                                        @foreach($brand_product as $key => $brand)
+                                            <option value="{{$brand->BID}}">{{$brand->brand_name}}</option>
                                         @endforeach
+                                            
                                     </select>
+                                </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Tên sản phẩm</label>
+                                <input type="text" data-validation="length" data-validation-length="min10" data-validation-error-msg="Làm ơn điền ít nhất 10 ký tự" name="product_name" class="form-control " id="slug" placeholder="Tên danh mục" onkeyup="ChangeToSlug();"> 
                             </div>
                             <div class="form-group">
-                                <label for="PName">Tên Sản Phẩm</label>
-                                <input type="text" class="form-control" name="PName" >
+                                <label for="exampleInputPassword1">Size</label>
+
+                                <input type="text" data-role="tagsinput" name="product_size" class="form-control">
+                                 
                             </div>
                             <div class="form-group">
-                                <label for="PCost">Giá Vốn</label>
-                                <input type="text" class="form-control" name="PCost" >
+                                <label for="exampleInputEmail1">Slug</label>
+                                <input type="text" name="product_slug" class="form-control " id="convert_slug" placeholder="Tên danh mục">
                             </div>
                             <div class="form-group">
-                                <label for="PPrice">Giá Bán</label>
-                                <input type="text" class="form-control" name="PPrice" >
+                                <label for="exampleInputEmail1">Giá bán</label>
+                                <input type="text" data-validation="length" data-validation-length="min5" data-validation-error-msg="Làm ơn điền số tiền" name="product_price" class="form-control price_format" id="" placeholder="Tên danh mục">
+                            </div>
+                             <div class="form-group">
+                                <label for="exampleInputEmail1">Giá gốc</label>
+                                <input type="text" data-validation="length" data-validation-length="min5" data-validation-error-msg="Làm ơn điền số tiền" name="price_cost" class="form-control price_format" id="" placeholder="Tên danh mục">
                             </div>
                             <div class="form-group">
-                                <label for="PSize">Size</label>
-                                <input type="text" class="form-control" name="PSize" >
+                                <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
+                                <input type="file" name="product_image" class="form-control" id="exampleInputEmail1">
                             </div>
                             <div class="form-group">
-                                <label for="PStock">Số Lượng</label>
-                                <textarea class="form-control" name="PStock"></textarea>
+                                <label for="exampleInputPassword1">Tags sản phẩm</label>
+
+                                <input type="text" data-role="tagsinput" name="product_tags" class="form-control">
+                                 
                             </div>
                             <div class="form-group">
-                                <label for="PPhoto">Hình Ảnh</label>
-                                <input type="file" class="form-control" name="PPhoto" >
+                                <label for="exampleInputPassword1">Mô tả sản phẩm</label>
+                                <textarea style="resize: none"  rows="8" class="form-control" name="product_desc" id="ckeditor1" placeholder="Mô tả sản phẩm"></textarea>
                             </div>
-                            
+                             <div class="form-group">
+                                <label for="exampleInputPassword1">Nội dung sản phẩm</label>
+                                <textarea style="resize: none" rows="8" class="form-control" name="product_content"  id="my-editor" placeholder="Nội dung sản phẩm"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Hiển thị</label>
+                                  <select name="product_status" class="form-control input-sm m-bot15">
+                                     <option value="0">Hiển thị</option>
+                                        <option value="1">Ẩn</option>
+                                        
+                                </select>
+                            </div>
                             <button type="submit" name="add_category" class="btn btn-info">Thêm Sản Phẩm</button>
                         </form>
                         </div>

@@ -26,10 +26,10 @@
                                         @foreach($all_brand as $key => $brand_pro)
                                         <tr>
                                           <td>{{$brand_pro->BID}}</td>
-                                          <td>{{$brand_pro->BName}}</td>
+                                          <td>{{$brand_pro->brand_name}}</td>
                                           <td>
                                             <?php
-                                          if($brand_pro->BStatus == 0){
+                                          if($brand_pro->brand_status == 0){
                                             ?>
                                             <a href="{{URL::to('/unactive-brand/'.$brand_pro->BID)}}"><span class="fa-thumb-styling fa fa-thumbs-up"></span></a>
                                             <?php
