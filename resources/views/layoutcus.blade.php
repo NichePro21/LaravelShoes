@@ -235,7 +235,7 @@
                                     <div id="cart">
 
                                         <div data-hover="dropdown" class="basket dropdown-toggle"> <a
-                                                href="/checkout/cart"> <span
+                                                href="/show-cart"> <span
                                                     class="cart_count">0</span> <span class="price hidden-xs">My Cart
                                                     / $0.00</span> </a> </div>
                                         <input id="cart-txt-heading" type="hidden" name="cart-txt-heading"

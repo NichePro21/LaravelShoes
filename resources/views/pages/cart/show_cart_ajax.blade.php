@@ -126,9 +126,7 @@
                                 </div>
                                 <div class="pull-right">
                                     <!-- <a href="" class="btn btn-primary"></a> -->
-                                    <button
-                                        onclick="window.location='http://brezzademo3.magikthemes.com/index.php?route=checkout/checkout'"
-                                        class="button btn-proceed-checkout" type="button"><span>Checkout</span></button>
+                                    <button onclick="window.location='/checkout'" class="button btn-proceed-checkout" type="button"><span>Checkout</span></a>
                                 </div>
                             </div>
                         </div>

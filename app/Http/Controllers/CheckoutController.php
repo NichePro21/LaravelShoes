@@ -45,12 +45,18 @@ class CheckoutController extends Controller
     // }
     public function checkout()
     {
+        if(Session::get('CID')){
+
+        }else{
+            $message = 'Please login';
+            return Redirect::to('/login')->with('message',$message);;
+        }
         $value = Session::get('CID');
         $cate_product = DB::table('tbl_categories')->orderby('CatID', 'desc')->get();
         $brand_product = DB::table('tbl_brand')->orderby('BID', 'desc')->get();
         $shippingAddress = DB::table('tbl_shipping')->where('tbl_shipping.CID', $value)->get();
        
-        return view('pages.checkout.show_checkout')->with('category', $cate_product)->with('brand', $brand_product)->with('shippingAddress', $shippingAddress);
+        return view('pages.checkout.show_checkout')->with('category', $cate_product)->with('brand_product', $brand_product)->with('shippingAddress', $shippingAddress);
     }
     public function save_checkout_customer(Request $request)
     {
@@ -78,6 +84,7 @@ class CheckoutController extends Controller
     }
     public function login_customer(Request $request)
     {
+        
         $username = $request->username;
         $password = md5($request->password);
 

@@ -54,7 +54,7 @@
                           </fieldset>
 
                 <div class="buttons clearfix">
-                  <div class="pull-left"><a href="http://brezzademo3.magikthemes.com/index.php?route=account/account" class="btn btn-default">Back</a></div>
+                  <div class="pull-left"><a href="/my-account" class="btn btn-default">Back</a></div>
                   <div class="pull-right">
                     <!-- <input type="submit" value="" class="btn btn-primary" /> -->
                     <button type="submit" class="button continue"> Continue </button>

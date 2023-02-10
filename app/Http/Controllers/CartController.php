@@ -79,36 +79,34 @@ class CartController extends Controller
         }
 
     }
-    public function update_cart(Request $request)
-    {
+    public function update_cart(Request $request){
         $data = $request->all();
         $cart = Session::get('cart');
-        if ($cart == true) {
-            // $message = '';
-
-            foreach ($data['cart_qty'] as $key => $qty) {
-             dd($data['cart_qty']);
-            //     $i = 0;
-               // foreach ($cart as $session => $val) {
-                    //$i++;
-
-                    //  if ($val['session_id'] == $key) {
-
-                    //    $cart[$session]['product_qty'] = $qty;
-                    //     $message .= '<p style="color:blue">' . $i . ') Cập nhật số lượng :' . $cart[$session]['product_name'] . ' thành công</p>';
-
-                    // } elseif ($val['session_id'] == $key && $qty > $cart[$session]['product_quantity']) {
-                    //     $message .= '<p style="color:red">' . $i . ') Cập nhật số lượng :' . $cart[$session]['product_name'] . ' thất bại</p>';
-                     //}
-
-                //}
-
+        if($cart==true){
+            $message = '';
+    
+            foreach($data['cart_qty'] as $key =>  $qty){
+                $i = 0;
+                foreach($cart as $session => $val){
+                    $i++;
+    
+                    if($val['session_id']==$key && $qty<$cart[$session]['product_quantity']){
+    
+                        $cart[$session]['product_qty'] = $qty;
+                        $message.='<p style="color:blue">'.$i.') Update Quantity :'.$cart[$session]['product_name'].' Success</p>';
+    
+                    }elseif($val['session_id']==$key && $qty>$cart[$session]['product_quantity']){
+                        $message.='<p style="color:red">'.$i.') Update Quantity :'.$cart[$session]['product_name'].' Fail</p>';
+                    }
+    
+                }
+    
             }
-
-          //  Session::put('cart', $cart);
-            return redirect()->back()->with('message', 'ok');
-        } else {
-            return redirect()->back()->with('message', 'Cập nhật số lượng thất bại');
+    
+            Session::put('cart',$cart);
+            return redirect()->back()->with('message',$message);
+        }else{
+            return redirect()->back()->with('message','Update Quantity Fail');
         }
     }
     public function show_cart_menu()

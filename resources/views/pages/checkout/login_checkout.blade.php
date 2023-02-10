@@ -3,7 +3,17 @@
 <div class="main-container col2-right-layout">
   <div class="main container">
   <div class="account-login">  
-        <div class="row">                <div id="content" class="col-sm-12">       <div class="page-title"><h2>Account Login</h2></div>
+        <div class="row">                <div id="content" class="col-sm-12">
+          <?php
+          $message = Session::get('message');
+          if ($message) {
+              
+              echo '<div class="alert info">  
+        <strong>Notification:</strong> '.$message.'</div>';
+              Session::put('message', null);
+          }
+          ?>
+          <div class="page-title"><h2>Account Login</h2></div>
         <div class="col2-set">
           <div class="col-1 new-users">
             <div class="content">

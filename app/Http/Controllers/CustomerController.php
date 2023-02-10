@@ -103,7 +103,7 @@ class CustomerController extends Controller
         $category = DB::table('tbl_categories')->orderby('CatID', 'desc')->get();
         $brand_product = DB::table('tbl_brand')->get();
         $Name_by_id = DB::table('tbl_customer')->where('tbl_customer.CID', $value)->limit(1)->get();
-        print_r($Name_by_id);
+       // print_r($Name_by_id);
         return view('customer.editAddress')->with(compact('category', 'brand_product', 'Name_by_id'));
     }
     public function UpdateAddress(Request $request){
@@ -125,7 +125,7 @@ class CustomerController extends Controller
         $category = DB::table('tbl_categories')->orderby('CatID', 'desc')->get();
         $brand_product = DB::table('tbl_brand')->get();
         $Name_by_id = DB::table('tbl_customer')->where('tbl_customer.CID', $value)->limit(1)->get();
-        print_r($Name_by_id);
+       // print_r($Name_by_id);
         return view('customer.accountDetail')->with(compact('category', 'brand_product', 'Name_by_id'));
     }
     public function UpdateInfomation(Request $request){
@@ -160,7 +160,7 @@ class CustomerController extends Controller
         $data['Shipping_Phone'] = $request->Shipping_Phone;
         $data['Shipping_Email'] = $request->Shipping_Email;
         $db = DB::table('tbl_Shipping')->where('CID', $value)->update($data);
-        print_r($db);
+      //  print_r($db);
         Session::put('message','Save Shipping Success!!');
         return Redirect::to('my-account/edit-address');
     }
@@ -176,7 +176,7 @@ class CustomerController extends Controller
         $data['Shipping_Phone'] = $request->Shipping_Phone;
         $data['Shipping_Email'] = $request->Shipping_Email;
         DB::table('tbl_Shipping')->insert($data);
-        print_r($data);
+      //  print_r($data);
         Session::put('message','Thêm Shipping Thành Công!!');
         return Redirect::to('my-account/edit-address');
     }
