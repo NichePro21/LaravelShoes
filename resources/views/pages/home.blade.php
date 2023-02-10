@@ -415,9 +415,11 @@
                                 <div class="slider-items slider-width-col4 products-grid block-content">
                                     @foreach ($all_product as $key => $product)
                                     <form>
+                                        <input type="hidden" value="{{$product->PID}}" data-id="{{$product->PID}}" class="PID{{$product->PID}}">
                                         <input type="hidden" value="{{$product->PID}}" name="cart_product_id" class="cart_product_id_{{$product->PID}}">
-                                        <input type="hidden" value="{{ csrf_token() }}" name="token" class="token_{{$product->PID}}">
+                                        @csrf
                                         <input type="hidden" value="{{$product->product_name}}" name="cart_product_name" class="cart_product_name_{{$product->PID}}">
+                                        <input type="hidden" value="{{$product->product_size}}" name="cart_product_size" class="cart_product_size_{{$product->PID}}">
                                         <input type="hidden" value="{{$product->product_image}}" name="cart_product_image" class="cart_product_image_{{$product->PID}}">
                                         <input type="hidden" value="{{$product->product_quantity}}" name="cart_product_quantity" class="cart_product_quantity_{{$product->PID}}">
                                         <input type="hidden" value="{{$product->product_price}}" name="cart_product_price" class="cart_product_price_{{$product->PID}}">
@@ -488,9 +490,10 @@
                                                             <div class="action">
                                                                 <button type="button" title=""
                                                                     data-original-title="Add to Cart"
-                                                                    class="button btn-cart link-cart" data-id="{{ $product->PID }}"
-                                                                    onclick="mgk_hm_cart.add('{{ $product->PID }}');"><span>Add to
+                                                                    class="button btn-cart link-cart add-to-oncart" data-id_product="{{ $product->PID }}"><span>Add to
                                                                         Cart</span></button>
+                                                                        
+                                                                    {{-- onclick="Addtocart('{{ $product->PID }}');" --}}
                                                             </div>
                                                         </div>
 

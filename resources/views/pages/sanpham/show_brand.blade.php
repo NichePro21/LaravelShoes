@@ -196,8 +196,20 @@
                                                                   </div>
                                               </div>
                                                                   <div class="action">
-                                              <button type="button" title="" data-original-title="Add to Cart" class="button btn-cart link-cart" onclick="cart.add('2013');"><span>Add to Cart</span></button>
-                                              </div>
+                                                                    <form action="{{URL::to('/save-cart')}}" method="POST">
+                                                                        <input type="hidden" value="{{$value->PID}}" data-id="{{$value->PID}}" class="PID{{$value->PID}}">
+                                                                        <input type="hidden" value="{{$value->PID}}" name="cart_product_id" class="cart_product_id_{{$value->PID}}">
+                                                                        @csrf
+                                                                        <input type="hidden" value="{{$value->product_name}}" name="cart_product_name" class="cart_product_name_{{$value->PID}}">
+                                                                        <input type="hidden" value="{{$value->product_size}}" name="cart_product_size" class="cart_product_size_{{$value->PID}}">
+                                                                        <input type="hidden" value="{{$value->product_image}}" name="cart_product_image" class="cart_product_image_{{$value->PID}}">
+                                                                        <input type="hidden" value="{{$value->product_quantity}}" name="cart_product_quantity" class="cart_product_quantity_{{$value->PID}}">
+                                                                        <input type="hidden" value="{{$value->product_price}}" name="cart_product_price" class="cart_product_price_{{$value->PID}}">
+                                                                        <input type="hidden" value="1" name="cart_product_qty" class="cart_product_qty_{{$value->PID}}">
+                                                                        <input name="productid_hidden" type="hidden"  value="{{$value->PID}}" />
+                                              <button type="button" title="" data-original-title="Add to Cart" class="button btn-cart link-cart add-to-oncart" data-id_product="{{$value->PID}}"><span>Add to Cart</span></button>
+                                                                    </form>
+                                                                </div>
                                               </div>
                           
                                           </div>
@@ -302,66 +314,12 @@
                   <button type="button" id="button-filter" class="btn btn-primary">Refine Search</button>
                 </div>
               </div>
-              <script type="text/javascript"><!--
-              $('#button-filter').on('click', function() {
-                filter = [];
-              
-                $('input[name^=\'filter\']:checked').each(function(element) {
-                  filter.push(this.value);
-                });
-              
-                location = 'http://brezzademo3.magikthemes.com/index.php?route=product/category&path=2001&filter=' + filter.join(',');
-              });
-              //--></script>
+              {{-- refine search --}}
                   <div class="panel panel-default special-products">
               <div class="panel-heading">Specials</div>
               
               
-                  <div class="product-layout">
-                  <div class="product-thumb transition">
-                    <div class="image"><a href="http://brezzademo3.magikthemes.com/index.php?route=product/product&amp;product_id=2026"><img src="http://brezzademo3.magikthemes.com/image/cache/catalog/furniture/product26-700x850.jpg" alt="Cozy Krafts Solid TV Table" title="Cozy Krafts Solid TV Table" class="img-responsive"></a></div>
-                    <div class="caption">
-                      <h4><a href="http://brezzademo3.magikthemes.com/index.php?route=product/product&amp;product_id=2026">Cozy Krafts Solid TV Table</a></h4>
-              
-              
-                              <p class="price">
-                                  <span class="price-new">$400.00</span> <span class="price-old">$500.00</span>
-                                            <span class="price-tax">Ex Tax: $400.00</span>
-                                </p>
-                            </div>
-              
-                  </div>
-                </div>
-                  <div class="product-layout">
-                  <div class="product-thumb transition">
-                    <div class="image"><a href="http://brezzademo3.magikthemes.com/index.php?route=product/product&amp;product_id=2025"><img src="http://brezzademo3.magikthemes.com/image/cache/catalog/furniture/product25-700x850.jpg" alt="DecorNation Floating Wall Shelf" title="DecorNation Floating Wall Shelf" class="img-responsive"></a></div>
-                    <div class="caption">
-                      <h4><a href="http://brezzademo3.magikthemes.com/index.php?route=product/product&amp;product_id=2025">DecorNation Floating Wall Shelf</a></h4>
-              
-              
-                              <p class="price">
-                                  <span class="price-new">$1,600.00</span> <span class="price-old">$2,000.00</span>
-                                            <span class="price-tax">Ex Tax: $1,600.00</span>
-                                </p>
-                            </div>
-              
-                  </div>
-                </div>
-                  <div class="product-layout">
-                  <div class="product-thumb transition">
-                    <div class="image"><a href="http://brezzademo3.magikthemes.com/index.php?route=product/product&amp;product_id=2022"><img src="http://brezzademo3.magikthemes.com/image/cache/catalog/furniture/product22-700x850.jpg" alt="Grandpa Rocking Chair" title="Grandpa Rocking Chair" class="img-responsive"></a></div>
-                    <div class="caption">
-                      <h4><a href="http://brezzademo3.magikthemes.com/index.php?route=product/product&amp;product_id=2022">Grandpa Rocking Chair</a></h4>
-              
-              
-                              <p class="price">
-                                  <span class="price-new">$1,800.00</span> <span class="price-old">$2,000.00</span>
-                                            <span class="price-tax">Ex Tax: $1,800.00</span>
-                                </p>
-                            </div>
-              
-                  </div>
-                </div>
+               
                   <div class="product-layout">
                   <div class="product-thumb transition">
                     <div class="image"><a href="http://brezzademo3.magikthemes.com/index.php?route=product/product&amp;product_id=2024"><img src="http://brezzademo3.magikthemes.com/image/cache/catalog/furniture/product24-700x850.jpg" alt="Nitraa Eco 3 Door Wardrobe" title="Nitraa Eco 3 Door Wardrobe" class="img-responsive"></a></div>

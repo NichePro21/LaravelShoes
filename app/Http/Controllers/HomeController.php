@@ -25,7 +25,8 @@ class HomeController extends Controller
     public function index2(Request $request)
     {
         $cate_product = DB::table('tbl_categories')->orderby('CatID', 'asc')->get();
-        $brand_product = DB::table('tbl_brand')->where('brand_status','0')->orderby('BID','Asc')->get(); 
+        $brand_product = DB::table('tbl_brand')->where('brand_status','0')->orderby('BID','Asc')->get();
+        
         $brand = DB::table('tbl_brand')->where('brand_status','0')->orderby('BID','Asc')->limit(4)->get(); 
 
         // $all_product = DB::table('tbl_products')

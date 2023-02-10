@@ -24,25 +24,25 @@ class CheckoutController extends Controller
     {
         $cate_product = DB::table('tbl_categories')->orderby('CatID', 'desc')->get();
         $brand_product = DB::table('tbl_brand')->orderby('BID', 'desc')->get();
-        return view('pages.checkout.login_checkout')->with('category', $cate_product)->with('brand', $brand_product);
+        return view('pages.checkout.login_checkout')->with('category', $cate_product)->with('brand_product', $brand_product);
     }
-    public function add_customer(Request $request)
-    {
-        $cate_product = DB::table('tbl_categories')->orderby('CatID', 'desc')->get();
-        $brand_product = DB::table('tbl_brand')->orderby('BID', 'desc')->get();
-        $data = array();
-        $data['CName'] = $request->CName;
-        $data['CPhone'] = $request->CPhone;
-        $data['CEmail'] = $request->CEmail;
-        $data['Cusername'] = $request->Cusername;
-        $data['CPass'] = md5($request->CPass);
+    // public function add_customer(Request $request)
+    // {
+    //     $cate_product = DB::table('tbl_categories')->orderby('CatID', 'desc')->get();
+    //     $brand_product = DB::table('tbl_brand')->orderby('BID', 'desc')->get();
+    //     $data = array();
+    //     $data['CName'] = $request->CName;
+    //     $data['CPhone'] = $request->CPhone;
+    //     $data['CEmail'] = $request->CEmail;
+    //     $data['Cusername'] = $request->Cusername;
+    //     $data['CPass'] = md5($request->CPass);
 
-        $customer_id = DB::table('tbl_customer')->insertGetId($data);
+    //     $customer_id = DB::table('tbl_customer')->insertGetId($data);
 
-        Session::put('CID', $customer_id);
-        Session::put('CName', $request->Cusername);
-        return Redirect::to('/my-account')->with('category', $cate_product)->with('brand', $brand_product);
-    }
+    //     Session::put('CID', $customer_id);
+    //     Session::put('CName', $request->Cusername);
+    //     return Redirect::to('/my-account')->with('category', $cate_product)->with('brand', $brand_product);
+    // }
     public function checkout()
     {
         $value = Session::get('CID');
@@ -74,7 +74,7 @@ class CheckoutController extends Controller
     public function logout_checkout()
     {
         Session::flush();
-        return Redirect::to('/login-checkout');
+        return Redirect::to('/login');
     }
     public function login_customer(Request $request)
     {
@@ -86,12 +86,15 @@ class CheckoutController extends Controller
         if ($result) {
             Session::put('CID', $result->CID);
             Session::put('Cusername',$result->Cusername);
-            return Redirect::to('my-account/');
+            //dd($result);
+           return Redirect::to('/my-account');
         } else {
-            return Redirect::to('/login-checkout');
+            echo 'not login';
+           return Redirect::to('/login');
         }
-
-        return Redirect('/checkout');
+        Session::save();
+        
+        return Redirect('/my-account');
     }
     public function payment()
     {

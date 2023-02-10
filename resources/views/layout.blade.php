@@ -31,6 +31,8 @@
         media="all">
     <link rel="stylesheet" type="text/css" href="{{ URL::to('/public/frontend/stylesheet/simple-line-icons.css') }}"
         media="all">
+        <link rel="stylesheet" type="text/css" href="https://lipis.github.io/bootstrap-sweetalert/dist/sweetalert.css"
+        media="all">
     <link rel="stylesheet" href="{{ URL::to('/public/frontend/javascript/jquery/owl-carousel/owl.carousel.css') }}"
         type="text/css">
     <link rel="stylesheet" href="{{ URL::to('/public/frontend/javascript/jquery/owl-carousel/owl.theme.css') }}"
@@ -53,7 +55,7 @@
     <script type="text/javascript" src="{{ URL::to('/public/frontend/js/common1.js') }}"></script>
     <script src="{{ URL::to('/public/frontend/javascript/jquery/owl-carousel/owl.carousel.min.js') }}"
         type="text/javascript"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://lipis.github.io/bootstrap-sweetalert/dist/sweetalert.js"></script>
     <script type="text/javascript" src="{{ URL::to('/public/frontend/js/jquery.mobile-menu.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('/public/frontend/js/jquery.countdown.min.js') }}"></script>
     
@@ -164,14 +166,14 @@
                          $Cusername = Session::get('Cusername');
                    if($customer_id == NULL){
                  ?>
-                                        <div class="login"> <a href="indexe223.html?route=account/login"><span
+                                        <div class="login"> <a href="/login"><span
                                                     class="hidden-xs">Login</span></a>
 
                                         </div>
                                     </div>
                                     <?php }else{ ?>
 
-                                    <div class="login"> <a href="indexe223.html?route=account/login"><span
+                                    <div class="login"> <a href="/logout"><span
                                                 class="hidden-xs">Logout</span></a>
 
                                     </div>
@@ -215,7 +217,7 @@
                                     <div id="cart">
 
                                         <div data-hover="dropdown" class="basket dropdown-toggle"> <a
-                                                href="index630e.html?route=checkout/cart"> <span
+                                                href="/show-cart"> <span
                                                     class="cart_count">0</span> <span class="price hidden-xs">My Cart
                                                     / $0.00</span> </a> </div>
                                         <input id="cart-txt-heading" type="hidden" name="cart-txt-heading"
@@ -226,6 +228,7 @@
                                             <li>
                                                 <p class="text-center noitem">Your shopping cart is empty!</p>
                                             </li>
+                                            
                                         </ul>
                                     </div>
                                 </div>
@@ -271,8 +274,6 @@
                                         <div class="level0-wrapper2">
                                             <div class="nav-block nav-block-center">
                                                 <div class="">
-
-
                                                     <ul class="level0">
                                                     @foreach($brand_product as $key => $value)
                                                                 <li class="level2 nav-6-1-1"><a
@@ -932,13 +933,13 @@
                        
                  ?>
                     <li class="last">
-                        <a href="indexe223.html?route=account/login">Login</a>
+                        <a href="/login">Login</a>
 
                     </li>
 
                     <?php }else{ ?>
                     <li class="last">
-                        <a href="indexe223.html?route=account/login">Logout</a>
+                        <a href="/logout">Logout</a>
 
                     </li>
                     <?php } ?>
@@ -959,15 +960,63 @@ Please donate via PayPal to donate@opencart.com
         </div>
     </div>
     <script type="text/javascript">
-        $(document).ready(function() {
-        //  $('.add-to-cart').click(function(){
-        //     var id = $(this);
-        //  });
-         $(".add-to-cart").on("click", function(){
-            alert("success");
-            });
-        });
-     </script>
+    // function Addtocart($product_id){
+    //              var id = $product_id;
+    //              //alert(id);
+    //             var cart_product_id = $('.cart_product_id_' + id).val();
+    //             var cart_product_name = $('.cart_product_name_' + id).val();
+    //             var cart_product_image = $('.cart_product_image_' + id).val();
+    //             var cart_product_quantity = $('.cart_product_quantity_' + id).val();
+    //             var cart_product_price = $('.cart_product_price_' + id).val();
+    //             var cart_product_qty = $('.cart_product_qty_' + id).val();
+    //             var token = $('.token_' + id).val();
+
+    //     if(parseInt(cart_product_qty)>parseInt(cart_product_quantity)){
+    //         alert('Làm ơn đặt nhỏ hơn ' + cart_product_quantity);
+    //     }else{
+
+    //         $.ajax({
+    //             url: '{{url('/add-cart-ajax')}}',
+    //             method: 'POST',
+    //             data:{
+    //                 cart_product_id:cart_product_id,
+    //                 cart_product_name:cart_product_name,
+    //                 cart_product_image:cart_product_image,
+    //                 cart_product_price:cart_product_price,
+    //                 cart_product_qty:cart_product_qty,
+    //                 _token:token,
+    //                 cart_product_quantity:cart_product_quantity},
+
+    //             success:function(){
+    //                 show_quick_cart();
+    //                 swal({
+    //                         title: "Đã thêm sản phẩm vào giỏ hàng",
+    //                         text: "Bạn có thể mua hàng tiếp hoặc tới giỏ hàng để tiến hành thanh toán",
+    //                         showCancelButton: true,
+    //                         cancelButtonText: "Xem tiếp",
+    //                         confirmButtonClass: "btn-success",
+    //                         confirmButtonText: "Đi đến giỏ hàng",
+    //                         closeOnConfirm: false
+    //                     },
+
+    //                     function() {
+    //                         window.location.href = "{{url('/gio-hang')}}";
+    //                     });
+
+    //                     document.getElementsByClassName("home_cart_"+id)[0].style.display = "none";
+    //                     document.getElementsByClassName("rm_home_cart_"+id)[0].style.display = "inline";
+
+
+    //                   show_cart();
+    //                   hover_cart();
+    //                 cart_session();
+    //             }
+
+    //         });
+    //     }
+    // }
+</script>
+
     <style>
         #mgkpq {
             display: none;

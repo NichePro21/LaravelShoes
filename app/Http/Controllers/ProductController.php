@@ -238,6 +238,7 @@ class ProductController extends Controller
                 <input type="hidden" id="wishlist_productname' . $val->PID . '" value="' . $val->product_name . '" class="cart_product_name_' . $val->PID . '">
               
                 <input type="hidden" value="' . $val->product_quantity . '" class="cart_product_quantity_' . $val->PID . '">
+                <input type="hidden" value="' . $val->product_size . '" class="cart_product_size_' . $val->PID . '">
                 
                 <input type="hidden" value="' . $val->product_image . '" class="cart_product_image_' . $val->PID . '">
 
@@ -253,8 +254,8 @@ class ProductController extends Controller
 
               <div class="item-img">
                <div class="item-img-info">
-                <a class="product-image" href="' . url('product/' . $val->product_slug) . '" title="Decorative Floating wall shelf">
-                                       <img width="199px" height="249px" src="' . url('public/uploads/product/' . $val->product_image) . '" alt="Decorative Floating wall shelf" title="Decorative Floating wall shelf">
+                <a class="product-image" href="' . url('product/' . $val->product_slug) . '" title="'.$val->product_name.'">
+                                       <img width="199px" height="249px" src="' . url('public/uploads/product/' . $val->product_image) . '" alt="'.$val->product_name.'">
                                        </a>
                  
 
@@ -262,7 +263,7 @@ class ProductController extends Controller
                <div class="box-hover">
                <ul class="add-to-links">
                                            <li>
-                   <a href="' . url('product/' . $val->product_slug) . '" class="link-quickview" data-name="Decorative Floating wall shelf">Quick View</a>
+                   <a href="' . url('product/' . $val->product_slug) . '" class="link-quickview" data-name="'.$val->product_name.'">Quick View</a>
                  </li>
                    
                  <li>
@@ -275,7 +276,10 @@ class ProductController extends Controller
                <div class="item-title"> 
                <a title="'.$val->product_name.'" href="' . url('product/' . $val->product_slug) . '"><b>'.$val->product_name.'</b></a>
              </div>
-                     
+             <div class="item-content">
+
+             
+         </div> 
 
                   </div>
                </div>  <!-- End Item info --> 

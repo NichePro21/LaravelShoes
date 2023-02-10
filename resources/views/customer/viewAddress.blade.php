@@ -1,58 +1,86 @@
 @extends('layoutcus')
-@section('header')
-    <div class="page-title-overlap bg-dark pt-4">
-        <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
-            <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
-                        <li class="breadcrumb-item"><a class="text-nowrap" href="/">Home</a></li>
+@section('breadcrumbs')
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul>
+                        <li> <a href="/">Home</a>
+                        </li>
+                        <li><span>/</span> <a href="/my-account">Account</a>
+                        </li>
+                        <li><span>/</span> <strong>Address Book</strong> </li>
 
-                    </ol>
-                </nav>
-            </div>
-            <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
-                <h1 class="h3 text-light mb-0">Address</h1>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container pb-5 mb-2 mb-md-4">
-    @endsection
-    @section('content')
-        <?php
-        $message = Session::get('message');
-        if ($message) {
-            echo '<p class="text-alert-danger">' . $message . '</p>';
-            Session::put('message', null);
-        }
-        ?>
-        @if (count($showAddress) != null)
-            @foreach ($showAddress as $item)
-                <div class="row">
-                    <div class="col-sm-6 mb-4 mb-sm-0">
-                        <div class="border rounded-lg p-4 h-100">
-                            <h2 class="woocommerce-column__title h6">Shipping address</h2>
-                            <ul class="font-size-sm list-unstyled mb-0">
-                                <li class="woocommerce-customer-details--address d-flex">
-                                    <i class="czi-location opacity-60 mr-2 mt-1"></i>
-                                    <div>
-                                        {{ $item->shipping_name }}<br>{{ $item->shipping_address }}<br>{{ $item->shipping_ward }},
-                                        {{ $item->shipping_city }}</div>
-                                </li>
-                                <li class="woocommerce-customer-details--edit pt-2">
-                                    <a class="btn btn-outline-primary btn-sm" href="/my-account/edit-address/shipping/">
-                                        <i class="czi-edit mr-1"></i>
-                                        Edit </a>
-                                </li>
-                            </ul>
+@endsection
+@section('content')
+    
+    @if (count($showAddress) != null)
+        @foreach ($showAddress as $value)
+        
+        
+            <div class="main-container col2-right-layout">
+                
+                <div class="main container">
+                    <div class="row">
+                        <div id="content" class="col-sm-9">
+                            <?php
+    $message = Session::get('message');
+    if ($message) {
+        
+        echo '<div class="alert success"><span class="closebtn"></span>  
+  <strong>Success!</strong> '.$message.'</div>';
+        Session::put('message', null);
+    }
+    ?>
+                            <div class="col-main">
+                                <div class="my-account">
+                                    <div class="page-title">
+                                        <h2> Address Book Entries</h2>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <tbody>
+                                                <tr>
+                                                     <td class="text-left">{{$value->CName}}<br>
+                                                        {{$value->CAdd}}<br>
+                                                        {{$value->Cward}}
+                                                        {{$value->Ccity}}
+                                                        <br>
+                                                    </td>
+                                                    <td class="text-right"><a
+                                                            href="/my-account/edit-address"
+                                                            class="btn btn-info">Edit</a> &nbsp;
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="buttons clearfix">
+                                        <div class="pull-left"><a href="/my-account" class="btn btn-default">Back</a></div>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+
+
                     </div>
                 </div>
-            @endforeach
-        @else
-            <div class="row">
-                <a class="btn btn-outline-primary btn-sm" href="/my-account/edit-address/shipping/">
-                    <i class="czi-edit mr-1"></i>
-                    Thêm Địa Chỉ </a>
             </div>
-        @endif
-    @endsection
+        @endforeach
+    @else
+        <div class="row">
+            <a class="btn btn-outline-primary btn-sm" href="/my-account/edit-address/shipping/">
+                <i class="czi-edit mr-1"></i>
+                Thêm Địa Chỉ </a>
+        </div>
+        </div>
+        </div>
+        </div>
+    @endif
+@endsection

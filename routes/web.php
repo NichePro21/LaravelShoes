@@ -86,31 +86,44 @@ Route::post('/update-product/{product_id}', 'ProductController@update_product');
 //Cart
 
 Route::post('/save-cart', 'CartController@save_cart');
+//Route::get('/show-cart', 'CartController@show_cart');
 Route::get('/show-cart', 'CartController@show_cart');
 Route::get('/delete-to-cart/{rowId}', 'CartController@delete_to_cart');
 Route::post('/update-cart-quantity', 'CartController@update_cart_quantity');
-
+Route::post('/update-cart', 'CartController@update_cart');
+Route::get('/del-product/{session_id}','CartController@delete_product');
 
 //checkout
 //acb
-Route::get('/login-checkout','CheckoutController@login_checkout');
-Route::get('/logout-checkout','CheckoutController@logout_checkout');
-Route::post('/add_customer','CheckoutController@add_customer');
+Route::get('/login','CheckoutController@login_checkout');
+Route::get('/logout','CheckoutController@logout_checkout');
+
 Route::post('/login-customer','CheckoutController@login_customer');
 Route::get('/checkout','CheckoutController@checkout');
 Route::post('/save-checkout-customer','CheckoutController@save_checkout_customer');
 Route::get('/payment','CheckoutController@payment');
 Route::post('/order-place','CheckoutController@OrderPlace');
+
+//cart
 Route::post('/add-cart-ajax','CartController@add_cart_ajax');
+
+//Route::get('/show-cart','CartController@show_cart_menu');
+Route::get('/hover-cart','CartController@hover_cart');
 //customer
+Route::post('/add_customer','CustomerController@add_customer');
 Route::get('/my-account', 'CustomerController@index');
 Route::get('/my-account/orders', 'CustomerController@viewAllOrder');
-Route::get('/my-account/edit-address', 'CustomerController@viewAddress');
-Route::get('/my-account/edit-account', 'CustomerController@ViewDetails');
-Route::get('/my-account/edit-address/shipping/', 'CustomerController@editShipping');
 Route::get('/my-account/add-address/shipping/', 'CustomerController@addShipping');
 Route::post('/my-account/save-address/shipping/', 'CustomerController@saveShipping');
 Route::get('/my-account/view-order/{OrderNo}', 'CustomerController@viewOrderById');
+Route::get('/my-account/register', 'CustomerController@register');
+
+Route::get('/my-account/edit-address', 'CustomerController@EditAddress');
+Route::get('/my-account/address', 'CustomerController@viewAddress');
+Route::get('/my-account/edit', 'CustomerController@ViewDetails');
+Route::post('/my-account/update', 'CustomerController@UpdateInfomation');
+Route::post('/my-account/edit-address/update', 'CustomerController@UpdateAddress');
+Route::get('/my-account/edit-address/shipping/', 'CustomerController@editShipping');
 
 //Order Detail Employee
 Route::get('/check-order-list','CheckoutController@order_details');

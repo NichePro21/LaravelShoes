@@ -666,7 +666,7 @@ h2.price {
 	width: 100%;
 }
 /* fixed mobile cart quantity input */
-#shopping-cart-table .input-group .form-control[name^="quantity"] {
+#shopping-cart-table .input-group .form-control[name^="cart_qty"] {
 	font-size: 14px;
 	font-weight: bold;
 	height: 32px;

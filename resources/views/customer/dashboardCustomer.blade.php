@@ -1,35 +1,55 @@
 @extends('layoutcus')
-@section('header')
-    <div class="page-title-overlap bg-dark pt-4">
-        <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
-            <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
-                        <li class="breadcrumb-item"><a class="text-nowrap" href="/">Home</a></li>
+@section('breadcrumbs')
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul>
+                        <li> <a href="/">Home</a>
+                        </li>
+                        <li><span>/</span> <strong>Account</strong> </li>
 
-                    </ol>
-                </nav>
-            </div>
-            <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
-                <h1 class="h3 text-light mb-0">DashBoard</h1>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container pb-5 mb-2 mb-md-4">
-    @endsection
-    @section('content')
+@endsection
+@section('content')
+<div class="main-container col2-right-layout">
+    <div class="main container">
+    
+        <div class="row">                <div id="content" class="col-sm-9">
+            <?php
+    $message = Session::get('message');
+    if ($message) {
         
-                            <div class="card text-center py-4 mb-4">
-                                <div class="card-body">
-                                    <i class="czi-home text-muted h2 font-weight-normal opacity-60 mb-4"></i>
-                                    <h5 class="pb-2">From your account dashboard you can:</h5>
-                                    <a href="/my-account/orders/"
-                                        class="btn btn-outline-primary btn-sm m-2">View orders</a>
-                                    <a href="/my-account/edit-address/"
-                                        class="btn btn-outline-primary btn-sm m-2">Manage addresses</a>
-                                    <a href="/my-account/edit-account/"
-                                        class="btn btn-outline-primary btn-sm m-2">Edit account details</a>
-                                </div>
-                            </div>
-                      
-    @endsection
+        echo '<div class="alert success">  
+  <strong>Success!</strong> '.$message.'</div>';
+        Session::put('message', null);
+    }
+    ?>
+          <div class="col-main">
+          <div class="account-login">  
+                <h2>My Account</h2>
+          <ul class="list-unstyled">
+            <li><a href="/my-account/edit">Edit your account information</a></li>
+            <li><a href="/my-account/password">Change your password</a></li>
+            <li><a href="/my-account/address">Modify your address book entries</a></li>
+            <li><a href="/my-account/wishlist">Modify your wish list</a></li>
+          </ul>
+                <h2>My Orders</h2>
+          <ul class="list-unstyled">
+            <li><a href="/my-account/orders">View your order history</a></li>
+                    <li><a href="/my-account/reward">Your Reward Points</a></li>
+                    <li><a href="/my-account/return">View your return requests</a></li>
+            <li><a href="/my-account/transaction">Your Transactions</a></li>
+            <li><a href="/my-account/recurring">Recurring payments</a></li>
+          </ul>
+          </div></div></div>
+        
+    
+    </div>
+    </div>
+    </div>
+@endsection

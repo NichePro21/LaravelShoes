@@ -1,86 +1,78 @@
 @extends('layoutcus')
 @section('header')
-    <div class="page-title-overlap bg-dark pt-4">
-        <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
-            <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
-                        <li class="breadcrumb-item"><a class="text-nowrap" href="/">Home</a></li>
-
-                    </ol>
-                </nav>
-            </div>
-            <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
-                <h1 class="h3 text-light mb-0">Orders</h1>
-            </div>
-        </div>
-    </div>
-    <div class="container pb-5 mb-2 mb-md-4">
+   
     @endsection
     @section('content')
   
                 @if (count($AllOrderById))
-                <div class="table-responsive font-size-md">
-                    <table
-                        class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table table table-hover mb-0">
-                        <thead>
-                            <tr>
-                                <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-number">
-                                    <span class="nobr">Order</span>
-                                </th>
-                                <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-date">
-                                    <span class="nobr">Date</span>
-                                </th>
-                                <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-status">
-                                    <span class="nobr">Status</span>
-                                </th>
-                                <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-total">
-                                    <span class="nobr">Total</span>
-                                </th>
-                                <th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-actions">
-                                    <span class="nobr">Actions</span>
-                                </th>
-                            </tr>
-                        </thead>
+                
                 @foreach ($AllOrderById as $key => $value)
-            
-                <tbody>
-                    <tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-on-hold order">
-                        <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-number align-middle"
-                            data-title="Order">
-                            <a href="/my-account/view-order/{{$value->OrderNo}}/"
-                                class="nav-link-style font-weight-medium">
-                                #{{$value->OrderNo}} </a>
-                        </td>
-                        <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-date align-middle"
-                            data-title="Date">
-                            <time datetime="2023-01-26T19:11:49+00:00">{{ date('d/m/y', strtotime($value->created_at)) }}</time>
-                        </td>
-                        <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-status align-middle"
-                            data-title="Status">
-                            <span class="badge badge-on-hold">{{$value->order_status}}</span>
-                        </td>
-                        <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-total align-middle"
-                            data-title="Total">
-                            <span class="woocommerce-Price-amount amount"><span
-                                    class="woocommerce-Price-currencySymbol">$</span>{{$value->order_total}}<small> VND</small></span> 
-                        </td>
-                        <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-actions align-middle"
-                            data-title="Actions">
-                            <a href="/my-account/view-order/{{$value->OrderNo}}/"
-                                class="btn btn-outline-secondary btn-icon btn-sm mr-1 my-1" data-toggle="tooltip"
-                                title="" data-original-title="View">
-                                <i class="czi-eye"></i>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
+                <div class="main-container col2-right-layout">
+                    <div class="main container">
+                      <div class="row">                <div id="content" class="col-sm-9">
+                          <div class="col-main">
+                          <div class="my-account">
+                                <div class="page-title">
+                            <h2> Order History</h2>
+                          </div>
+                                <div class="table-responsive">
+                            <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <td class="text-right">Order ID</td>
+                                  <td class="text-left">Customer</td>
+                                  <td class="text-right">No. of Products</td>
+                                  <td class="text-left">Status</td>
+                                  <td class="text-right">Total</td>
+                                  <td class="text-left">Date Added</td>
+                                  <td></td>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                            <tr>
+                                  <td class="text-right">#151</td>
+                                  <td class="text-left">hoangshop hoangshop</td>
+                                  <td class="text-right">1</td>
+                                  <td class="text-left">Pending</td>
+                                  <td class="text-right">$205.00</td>
+                                  <td class="text-left">09/02/2023</td>
+                                  <td class="text-right"><a href="http://brezzademo3.magikthemes.com/index.php?route=account/order/info&amp;order_id=151" data-toggle="tooltip" title="" class="btn btn-info" data-original-title="View"><i class="fa fa-eye"></i></a></td>
+                                </tr>
+                                          </tbody>
+                            </table>
+                          </div>
+                          <div class="text-right"></div>
+                                <div class="buttons clearfix">
+                            <div class="pull-right">
+                              <!-- <a href="" class="btn btn-primary"></a> -->
+                              <button onclick="window.location='http://brezzademo3.magikthemes.com/index.php?route=account/account';" class="button continue">Continue</button>
+                            </div>
+                          </div>
+                          </div></div></div>
+                    </div>
+                    </div>
+                    </div>
                 @endforeach
                 @else
-                <h4 style="text-align:center">No Have Order</h4>
+                <div class="main-container col2-right-layout">
+                    <div class="main container">
+                      <div class="row">                <div id="content" class="col-sm-9">
+                          <div class="col-main">
+                          <div class="my-account">
+                                <div class="page-title">
+                            <h2> Order History</h2>
+                          </div>
+                                <p>You have not made any previous orders!</p>
+                                <div class="buttons clearfix">
+                                    <div class="pull-left">
+                                        <div class="pull-left"><a href="/my-account" class="btn btn-default">Back</a></div>
+                                    </div>
+                          </div>
+                          </div></div></div>
+                    
+                    </div>
+                    </div>
+                    </div>
                 @endif
-
-            </table>
-        </div>
        
     @endsection
