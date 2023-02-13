@@ -1,9 +1,15 @@
 @extends('admin_layout');
 @section('admin_content')
+<div class="row bg-title">
+  <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+      <h4 class="page-title">Category Layouts</h4> </div>
+  
+  <!-- /.col-lg-12 -->
+</div>
 <div class="table-agile-info">
     <div class="panel panel-default">
       <div class="panel-heading">
-        Liệt kê Danh Mục Sản Phẩm
+        Category
       </div>
       
       <div class="table-responsive">
@@ -23,7 +29,7 @@
                 </label>
               </th>
               <th>ID</th>
-              <th>Tên danh mục</th>
+              <th>Category Name</th>
               <th>slug</th>
               <th>Parent</th>
               <th>Edit</th>

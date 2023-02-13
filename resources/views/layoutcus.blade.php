@@ -60,9 +60,14 @@
 
     <link href="{{ URL::to('/public/frontend/image/catalog/cart.png') }}" rel="icon" />
     <style type="text/css">
-    .alert {
+    .alert-success{
   padding: 20px;
   background-color: #04AA6D;
+  color: white;
+}
+.alert-danger{
+  padding: 20px;
+  background-color: #da1414;
   color: white;
 }
 

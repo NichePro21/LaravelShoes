@@ -32,11 +32,13 @@ class HomeController extends Controller
         // $all_product = DB::table('tbl_products')
         // ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_products.category_id')
         // ->join('tbl_tags','tbl_tags.tag_id','=','tbl_products.tag_id')->orderby('tbl_products.product_id','desc')->get();
-        $all_product = DB::table('tbl_product')->orderby('PID', 'desc')->limit(2)->get();
+        $all_product = DB::table('tbl_product')->orderby('PID', 'desc')->limit(4)->get();
         
         $product_by_brand = DB::table('tbl_brand')->join('tbl_product','tbl_product.BID','=','tbl_brand.BID')->limit(4)->get();
+
+        $galery_product = DB::table('tbl_product')->orderby('PID','desc')->limit(1)->get();
         //$brand_tabs = Brand::orderBy('BID', 'DESC')->get();
-        return view('pages.home')->with('category', $cate_product)->with('brand_product', $brand_product)->with('brand', $brand)->with('all_product', $all_product)->with('product_by_brand',$product_by_brand);
+        return view('pages.home')->with('category', $cate_product)->with('galery_product',$galery_product)->with('brand_product', $brand_product)->with('brand', $brand)->with('all_product', $all_product)->with('product_by_brand',$product_by_brand);
     }
     
 

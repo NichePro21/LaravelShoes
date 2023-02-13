@@ -9,5 +9,4 @@
       <p class="fs-sm">You will be receiving an email shortly with confirmation of your order. <u>You can now:</u></p><a class="btn btn-secondary mt-3 me-3" href="/">Go back shopping</a>
     </div>
   </div>
-
   @endsection

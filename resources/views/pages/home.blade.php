@@ -142,30 +142,26 @@
                             <ul class="products-grid">
                                 <li class="right-space two-height item">
                                     <div class="item-inner">
-
+@foreach($galery_product as $key =>$value)
                                         <div class="item-img">
                                             <div class="item-img-info">
                                                 <a class="product-image"
-                                                    href="index0901.html?route=product/product&amp;product_id=2001"
-                                                    title="Sterling Side Mounted wardrobe pullout">
-                                                    <img src="{{ URL::to('/public/frontend/cache/catalog/furniture/product1-700x850.jpg') }}"
-                                                        alt="Sterling Side Mounted wardrobe pullout"
-                                                        title="Sterling Side Mounted wardrobe pullout" />
+                                                    href="{{$value->product_slug}}"
+                                                    title="{{$value->product_name}}">
+                                                    <img src="{{ URL::to('/public/uploads/product/') }}/{{ $value->product_image }}"
+                                                        alt="{{$value->product_name}}"
+                                                        title="{{$value->product_name}}" />
                                                 </a>
                                                 <div class="hot-label hot-top-right">Hot</div>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
                                                         <li>
-                                                            <a href="index7a76.html?route=product/quickview&amp;product_id=2001;"
+                                                            <a href="/product/{{$value->product_slug}}"
                                                                 class="link-quickview"
-                                                                data-name="Sterling Side Mounted wardrobe pullout">Quick
+                                                                data-name="{{$value->product_name}}">Quick
                                                                 view</a>
                                                         </li>
 
-                                                        <li>
-                                                            <a onclick="mgk_hm_wishlist.add('2001');"
-                                                                class="link-wishlist">Wishlist</a>
-                                                        </li>
 
                                                     </ul>
                                                 </div>
@@ -180,8 +176,8 @@
                                             <div class="info-inner">
                                                 <div class="item-title">
                                                     <a title="Sterling Side Mounted wardrobe pullout"
-                                                        href="index0901.html?route=product/product&amp;product_id=2001">
-                                                        Sterling Side Mounted war... </a>
+                                                        href="{{$value->product_slug}}">
+                                                        {{$value->product_name}}</a>
                                                 </div>
                                                 <div class="item-content">
                                                     <div class="rating">
@@ -209,17 +205,28 @@
                                                         </div>
                                                     </div>
                                                     <div class="action">
+                                                        <form>
+                                                            <input type="hidden" value="{{$value->PID}}" data-id="{{$value->PID}}" class="PID{{$value->PID}}">
+                                                            <input type="hidden" value="{{$value->PID}}" name="cart_product_id" class="cart_product_id_{{$value->PID}}">
+                                                            @csrf
+                                                            <input type="hidden" value="{{$value->product_name}}" name="cart_product_name" class="cart_product_name_{{$value->PID}}">
+                                                            <input type="hidden" value="{{$value->product_size}}" name="cart_product_size" class="cart_product_size_{{$value->PID}}">
+                                                            <input type="hidden" value="{{$value->product_image}}" name="cart_product_image" class="cart_product_image_{{$value->PID}}">
+                                                            <input type="hidden" value="{{$value->product_quantity}}" name="cart_product_quantity" class="cart_product_quantity_{{$value->PID}}">
+                                                            <input type="hidden" value="{{$value->product_price}}" name="cart_product_price" class="cart_product_price_{{$value->PID}}">
+                                                            <input type="hidden" value="1" name="cart_product_qty" class="cart_product_qty_{{$value->PID}}">
                                                         <button type="button" title=""
                                                             data-original-title="Add to Cart"
-                                                            class="button btn-cart link-cart" 
-                                                            onclick="mgk_hm_cart.add('2001');"><span>Add to
+                                                            class="button btn-cart link-cart add-to-oncart" data-id_product="{{ $value->PID }}"><span>Add to
                                                                 Cart</span></button>
+                                                        </form>
                                                     </div>
                                                 </div>
 
                                             </div>
                                         </div> <!-- End Item info -->
                                     </div> <!-- End  Item inner-->
+                                    @endforeach
                                 </li>
                             </ul>
 

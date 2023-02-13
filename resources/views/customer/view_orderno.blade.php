@@ -1,78 +1,162 @@
-
 @extends('layoutcus')
-@section('header')
-<?php print_r($ViewOrder) ?>
-    <div class="page-title-overlap bg-dark pt-4">
-        <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
-            <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
-                        <li class="breadcrumb-item"><a class="text-nowrap" href="/">Home</a></li>
+@section('breadcrumbs')
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul>
+                        <li> <a href="/">Home</a>
+                        </li>
+                        <li><span>/</span> <a href="/my-account">Account</a>
+                        </li>
+                        <li><span>/</span> <a href="/my-account/orders">Order History</a>
+                        </li>
+                        <li><span>/</span> <strong>Order Information</strong> </li>
 
-                    </ol>
-                </nav>
-            </div>
-            <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
-                
-                
-                <h1 class="h3 text-light mb-0">Order #</h1>
-              
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-    
-    <div class="container pb-5 mb-2 mb-md-4">
-    @endsection
-    @section('content')
-    @foreach($ViewOrder as $key=> $value)
-<div class="woocommerce-order-details card">
-    <div class="card-header">
-    <h2 class="woocommerce-order-details__title h6 mb-0">Order details</h2>
+@endsection
+@section('content')
+    <div class="main-container col2-right-layout">
+        <div class="main container">
+            <div class="row">
+                <div id="content" class="col-sm-9">
+                    <div class="col-main">
+                        <div class="my-account">
+                            <div class="page-title">
+                                <h2> Order Information</h2>
+                            </div>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <td class="text-left" colspan="2">Order Details</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-left" style="width: 50%;"> <b>Order ID:</b> # @php echo $getorder->order_id @endphp<br>
+                                            <b>Date Added:</b> @php echo $getorder->order_date @endphp
+                                        </td>
+                                        <td class="text-left" style="width: 50%;"> <b>Payment Method:</b> @if($shipping->shipping_method==0) Banking @else Cash On
+                                            Delivery @endif<br>
+                                            <b>Shipping Method:</b> Flat Shipping Rate
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <td class="text-left" style="width: 50%; vertical-align: top;">Default Address</td>
+                                        <td class="text-left" style="width: 50%; vertical-align: top;">Shipping Address</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-left">{{$customer->CName}}<br>{{$customer->CAdd}}<br>{{$customer->Cward}}<br>{{$customer->Ccity}}<br>{{$customer->CPhone}}</td>
+                                        <td class="text-left">{{$shipping->shipping_name}}<br>{{$shipping->shipping_address}}<br>{{$shipping->shipping_ward}}
+                                            <br>{{$shipping->shipping_city}}<br>{{$shipping->shipping_phone}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td class="text-left">Product Name</td>
+                                            <td class="text-left">Model</td>
+                                            <td class="text-right">Quantity</td>
+                                            <td class="text-right">Price</td>
+                                            <td class="text-right">Total</td>
+                                            <td style="width: 20px;"></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @php 
+                                        $i = 0;
+                                        $total = 0;
+                                        @endphp
+                                        @foreach($order_details as $key => $details)
+                                        @php 
+                                       // print_r($details);
+                                        $i++;
+                                        $subtotal = $details->product_price * $details->product_sales_quantity;
+                                            $total += $subtotal;
+                                        @endphp
+                                        <tr>
+                                            <td class="text-left">{{$details->product_name}} </td>
+                                            <td class="text-left">YFTK {{$details->product_id}}</td>
+                                            <td class="text-right">{{$details->product_sales_quantity}}</td>
+                                            <td class="text-right">${{number_format($details->product_price ,0,',','.')}}</td>
+                                            <td class="text-right">${{number_format($subtotal ,0,',','.')}}</td>
+                                          
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                   
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="3"></td>
+                                            <td class="text-right"><b>Sub-Total</b></td>
+                                            <td class="text-right">${{number_format($total ,0,',','.')}}</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"></td>
+                                            <td class="text-right"><b>Flat Shipping Rate</b></td>
+                                            <td class="text-right">$5.00</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"></td>
+                                            <td class="text-right"><b>Total</b></td>
+                                            <td class="text-right">${{ number_format($total, 0, ',', '.') + 5 }}</td>
+                                            <td></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <h3>Order History</h3>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <td class="text-left">Date Added</td>
+                                        <td class="text-left">Status</td>
+                                        <td class="text-left">Comment</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-left">@php echo $getorder->order_date @endphp</td>
+                                        {{-- @foreach ($getorder as $key => $val) --}}
+                                        
+                                        @if($getorder->order_status==1)
+                                        <td class="text-left">Pending</td>
+                                        @elseif($getorder->order_status==2)
+                                        <td class="text-left">Success</td>
+                                        @else
+                                        <td class="text-left">Cancel</td>
+                                        @endif
+                                        {{-- @endforeach --}}
+                                        <td class="text-left"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="buttons clearfix">
+                                <div class="pull-right">
+                                    <!--  <a href="" class="btn btn-primary"></a> -->
+                                    <button
+                                        onclick="window.location='/my-account/orders'"
+                                        class="button continue">Back</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="card-body">
-    <div class="row mx-n2">
-    <div class="col-md-7">
-    <div class="widget widget_products">
-    <ul class="product_list_widget">
-    <li class="woocommerce-table__line-item order_item">
-    <div class="media align-items-center">
-    <a href="/product/{{$value->PID}}" class="widget-product-thumb">
-    <img width="350" height="326" src="/public/uploads/product/{{$value->PPhoto}}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" srcset="/public/uploads/product/{{$value->PPhoto}} 350w,/public/uploads/product/{{$value->PPhoto}} 300w, /public/uploads/product/{{$value->PPhoto}} 518w" sizes="(max-width: 350px) 100vw, 350px"> </a>
-    <div class="media-body">
-    <h6 class="widget-product-title">
-    <a href="/product/{{$value->PID}}">{{$value->PName}}</a></h6>
-    <div class="widget-product-meta">
-    <span class="text-accent mr-1"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$value->order_total}}<small>VND</small></span></span>
-    <span class="text-muted">× 1</span>
-    </div>
-    </div>
-    </div>
-    </li>
-    </ul>
-    </div>
-    </div>
-    <div class="col-md-5 pt-4 pt-md-0">
-    <div class="bg-secondary rounded-lg p-4 h-100">
-    <div class="d-flex justify-content-between align-items-center font-size-md mb-2 pb-1">
-    <span class="mr-2">Subtotal:</span>
-    <span class="text-right"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$value->order_total}}<small>VND</small></span></span>
-    </div>
-    <div class="d-flex justify-content-between align-items-center font-size-md mb-2 pb-1">
-    <span class="mr-2">Shipping:</span>
-    <span class="text-right"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>Free</span>&nbsp;</span>
-    </div>
-    <div class="d-flex justify-content-between align-items-center font-size-md mb-2 pb-1">
-    <span class="mr-2">Payment method:</span>
-    <span class="text-right">Paying Cash</span>
-    </div>
-    <div class="d-flex justify-content-between align-items-center font-size-md mb-2 pb-1">
-    <span class="mr-2">Total:</span>
-    <span class="text-right"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$value->order_total}} <small>VND</small></span></span>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-   @endforeach
-    @endsection
+@endsection

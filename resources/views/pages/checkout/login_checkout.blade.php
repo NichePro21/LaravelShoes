@@ -6,11 +6,16 @@
         <div class="row">                <div id="content" class="col-sm-12">
           <?php
           $message = Session::get('message');
+          $messagefail = Session::get('messagefail');
           if ($message) {
               
-              echo '<div class="alert info">  
+              echo '<div class="alert-success">  
         <strong>Notification:</strong> '.$message.'</div>';
               Session::put('message', null);
+          }elseif($messagefail){
+            echo '<div class="alert-danger">  
+        <strong>Notification:</strong> '.$messagefail.'</div>';
+              Session::put('messagefail', null);
           }
           ?>
           <div class="page-title"><h2>Account Login</h2></div>

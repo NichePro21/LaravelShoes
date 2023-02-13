@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
+use App\Order;
+use App\OrderDetails;
+use App\Product;
+use App\Brand;
+use App\Shipping;
+use App\Statistic;
+use App\Customer;
 Session::start();
 class CustomerController extends Controller
 {
@@ -52,6 +59,11 @@ class CustomerController extends Controller
 
             Session::put('CID', $customer_id);
             Session::put('CName', $request->Cusername);
+            // if(Session::get('cart')){
+            //     return Redirect::to('/show-cart');
+            // }else{
+            //     return Redirect::to('/my-account');
+            // };
         return Redirect::to('/my-account')->with('category', $cate_product)->with('brand_product', $brand_product);
     }
     public function register(){
@@ -62,13 +74,45 @@ class CustomerController extends Controller
     }
     public function viewAllOrder(Request $request)
     {
-        $this->AuthLogin();
-        $value = $request->session()->get('CID');
-        $category = DB::table('tbl_categories')->orderby('CatID', 'desc')->get();
-        $brand_product = DB::table('tbl_brand')->get();
+        //$this->AuthLogin();
+       $value = $request->session()->get('CID');
+        $category = DB::table('tbl_categories')->orderby('CatID', 'ASC')->get();
+        $brand_product = DB::table('tbl_brand')->orderby('BID', 'ASC')->get();
         $Name_by_id = DB::table('tbl_customer')->where('tbl_customer.CID', $value)->limit(1)->get();
-        $AllOrderById = DB::table('masterorder')->join('tbl_customer', 'tbl_customer.CID', '=', 'masterorder.CID')->join('tbl_orderdetails', 'masterorder.OrderNo', '=', 'tbl_orderdetails.OrderNo')->where('tbl_customer.CID', $value)->get();
-        return view('customer.orders')->with(compact('category', 'brand_product', 'Name_by_id', 'AllOrderById'));
+       
+        //$AllOrderById = DB::table('masterorder')->join('tbl_customer', 'tbl_customer.CID', '=', 'masterorder.CID')->join('tbl_orderdetails', 'masterorder.OrderNo', '=', 'tbl_orderdetails.OrderNo')->where('tbl_customer.CID', $value)->get();
+        if(!Session::get('CID')){
+			return redirect('/login')->with('error','Vui lòng đăng nhập để xem lịch sử mua hàng');
+		}else{
+
+			
+			//category post
+	        //$category_post = CatePost::orderBy('cate_post_id','DESC')->get();
+
+	        //slide
+	        //$slider = Slider::orderBy('slider_id','DESC')->where('slider_status','1')->take(4)->get();
+	        //seo 
+	        // $meta_desc = "Lịch sử đơn hàng"; 
+	        // $meta_keywords = "Lịch sử đơn hàng";
+	        // $meta_title = "Lịch sử đơn hàng";
+	        // $url_canonical = $request->url();
+	        //--seo
+	        
+	    	//$cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_parent','desc')->orderby('category_order','ASC')->get(); 
+	        
+	        //$brand_product = DB::table('tbl_brand')->where('brand_status','0')->orderby('brand_id','desc')->get(); 
+
+	        $getorder = Order::where('CID',Session::get('CID'))->orderby('order_id','DESC')->paginate(10);
+            foreach($getorder as $key => $value){
+               $order_code =  $value->order_code;
+                $order_details = OrderDetails::with('product')->where('order_code',$order_code)->get();
+                
+            }
+           
+	    	return view('customer.orders')->with(compact('category', 'brand_product', 'Name_by_id','order_details','getorder'));
+		}
+        
+
     }
     public function viewOrderById($OrderNo,Request $request)
     {
@@ -180,5 +224,33 @@ class CustomerController extends Controller
         Session::put('message','Thêm Shipping Thành Công!!');
         return Redirect::to('my-account/edit-address');
     }
-    
+    public function view_history_order(Request $request,$order_code){
+		if(!Session::get('CID')){
+			return redirect('/login')->with('error','Please Login');
+		}else{
+
+		
+	    
+	        
+            $cate_product = DB::table('tbl_categories')->orderby('CatID', 'ASC')->get();
+            $brand_product = DB::table('tbl_brand')->orderby('BID', 'ASC')->get();
+	        
+	        //xem lich sử
+	        $order_details = OrderDetails::with('product')->where('order_code',$order_code)->get();
+			$getorder = Order::where('order_code',$order_code)->first();
+			
+			$customer_id = $getorder->CID;
+			$shipping_id = $getorder->shipping_id;
+			$order_status = $getorder->order_status;
+			
+			$customer = Customer::where('CID',$customer_id)->first();
+			$shipping = Shipping::where('shipping_id',$shipping_id)->first();
+
+			//$order_details_product = OrderDetails::with('product')->where('order_code', $order_code)->get();
+
+			
+
+	    	return view('customer.view_orderno')->with('category',$cate_product)->with('brand_product',$brand_product)->with('order_details',$order_details)->with('customer',$customer)->with('shipping',$shipping)->with('getorder',$getorder)->with('order_status',$order_status)->with('order_code',$order_code); //1
+		}
+	}
 }

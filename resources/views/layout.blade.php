@@ -55,6 +55,7 @@
     
 
     <link href="{{ URL::to('/public/frontend/image/catalog/cart.png') }}" rel="icon" />
+    
     <style type="text/css">
         /* sale label */
         .sale-label {
@@ -339,49 +340,43 @@
                         <div class="slider-items slider-width-col6">
                             <!-- Item -->
                             <div class="item">
-                                <a href="index98fa.html?route=product/manufacturer/info&amp;manufacturer_id=8">
-                                    <img src="{{ URL::to('/public/frontend/cache/catalog/b-logo1-130x50.png') }}"
-                                        alt="Apple">
+                                <a href="#">
+                                    <img width="130px" height="50px" src="{{ URL::to('/public/frontend/image/converse.png') }}">
                                 </a>
                             </div>
                             <!-- End Item -->
                             <!-- Item -->
                             <div class="item">
-                                <a href="index74a7.html?route=product/manufacturer/info&amp;manufacturer_id=9">
-                                    <img src="{{ URL::to('/public/frontend/cache/catalog/b-logo2-130x50.png') }}"
-                                        alt="Canon">
+                                <a href="/brand/nike">
+                                    <img width="130px" height="50px" src="{{ URL::to('/public/frontend/image/nike.png') }}">
                                 </a>
                             </div>
                             <!-- End Item -->
                             <!-- Item -->
                             <div class="item">
-                                <a href="indexe69c.html?route=product/manufacturer/info&amp;manufacturer_id=7">
-                                    <img src="{{ URL::to('/public/frontend/cache/catalog/b-logo3-130x50.png') }}"
-                                        alt="Hewlett-Packard">
+                                <a href="/brand/adidas">
+                                    <img width="130px" height="50px" src="{{ URL::to('/public/frontend/image/adidas.png') }}">
                                 </a>
                             </div>
                             <!-- End Item -->
                             <!-- Item -->
                             <div class="item">
-                                <a href="index54e6.html?route=product/manufacturer/info&amp;manufacturer_id=5">
-                                    <img src="{{ URL::to('/public/frontend/cache/catalog/b-logo4-130x50.png') }}"
-                                        alt="HTC">
+                                <a href="/brand/new-balance">
+                                    <img width="130px" height="50px" src="{{ URL::to('/public/frontend/image/newblance.png') }}">
                                 </a>
                             </div>
                             <!-- End Item -->
                             <!-- Item -->
                             <div class="item">
-                                <a href="index5b2d.html?route=product/manufacturer/info&amp;manufacturer_id=6">
-                                    <img src="{{ URL::to('/public/frontend/cache/catalog/b-logo5-130x50.png') }}"
-                                        alt="Palm">
+                                <a href="/brand/puma">
+                                    <img width="130px" height="50px" src="{{ URL::to('/public/frontend/image/puma.png') }}">
                                 </a>
                             </div>
                             <!-- End Item -->
                             <!-- Item -->
                             <div class="item">
-                                <a href="index8be0.html?route=product/manufacturer/info&amp;manufacturer_id=10">
-                                    <img src="{{ URL::to('/public/frontend/cache/catalog/b-logo6-130x50.png') }}"
-                                        alt="Sony">
+                                <a href="/brand/vans">
+                                    <img width="130px" height="50px" src="{{ URL::to('/public/frontend/image/vans.png') }}">
                                 </a>
                             </div>
                             <!-- End Item -->
@@ -399,28 +394,26 @@
                             <div class="footer-column pull-left">
                                 <h4>Customer Service</h4>
                                 <ul class="links">
-                                    <li class="first"><a href="index2724.html?route=information/contact">Contact
+                                    <li class="first"><a href="#">Contact
                                             Us</a></li>
-                                    <li><a href="index71ba.html?route=account/return/add">Returns</a></li>
-                                    <li><a href="indexe223.html?route=account/wishlist">Wish List</a></li>
-                                    <li><a href="indexe223.html?route=account/order">Order History</a></li>
-                                    <li><a href="index7cb2.html?route=information/sitemap">Site Map</a></li>
-                                    <li class="last"><a href="indexe223.html?route=account/account"
+                                    <li><a href="my-account/order">Order History</a></li>
+                                    <li><a href="#">Site Map</a></li>
+                                    <li class="last"><a href="my-account"
                                             title="My Account">My Account</a></li>
                                 </ul>
                             </div>
                             <div class="footer-column pull-left">
                                 <h4>Extras</h4>
                                 <ul class="links">
-                                    <li class="first"><a href="indexd773.html?route=product/manufacturer">Brands</a>
+                                    <li class="first"><a href="#">Brands</a>
                                     </li>
-                                    <li><a href="index4dd2.html?route=account/voucher">Gift Certificates</a></li>
-                                    <li><a href="index3d18.html?route=affiliate/account">Affiliates</a></li>
+                                    <li><a href="#">Gift Certificates</a></li>
+                                    <li><a href="#">Affiliates</a></li>
 
-                                    <li><a href="indexe637.html?route=magikblog/article">Blog</a></li>
+                                    <li><a href="#">Blog</a></li>
 
-                                    <li><a href="indexe223.html?route=account/order">Order History</a></li>
-                                    <li class="last"><a href="indexf110.html?route=product/special">Specials</a>
+                                    <li><a href="/my-account/order">Order History</a></li>
+                                    <li class="last"><a href="#">Specials</a>
                                     </li>
                                 </ul>
                             </div>
@@ -428,22 +421,22 @@
                                 <h4>Information</h4>
                                 <ul class="links">
                                     <li class="first"><a
-                                            href="index8816.html?route=information/information&amp;information_id=4">About
+                                            href="#">About
                                             Us</a></li>
                                     <li class=""><a
-                                            href="index1766.html?route=information/information&amp;information_id=6">Delivery
+                                            href="#">Delivery
                                             Information</a></li>
                                     <li class=""><a
-                                            href="index1679.html?route=information/information&amp;information_id=3">Privacy
+                                            href="#">Privacy
                                             Policy</a></li>
                                     <li class=""><a
-                                            href="index99e4.html?route=information/information&amp;information_id=5">Terms
+                                            href="#">Terms
                                             &amp; Conditions</a></li>
                                     <li class=""><a
-                                            href="index11cd.html?route=information/information&amp;information_id=7">Suppliers</a>
+                                            href="#">Suppliers</a>
                                     </li>
                                     <li class=""><a
-                                            href="index7184.html?route=information/information&amp;information_id=8">Our
+                                            href="#">Our
                                             Store</a></li>
                                 </ul>
                             </div>
@@ -596,7 +589,7 @@
                 <li>
                     <a href="/">Home</a>
                 </li>
-                <li><a href="index7aac.html?route=product/category&amp;path=2001">Living Room</a>
+                <li><a href="#">Living Room</a>
                     <ul>
                         <li><a href="index6dff.html?route=product/category&amp;path=2001_2007">Racks</a>
                             <ul>
@@ -611,315 +604,18 @@
                             </ul>
 
                         </li>
-                        <li><a href="indexbad4.html?route=product/category&amp;path=2001_2008">Sofas</a>
-                            <ul>
-                                <li><a href="index7430.html?route=product/category&amp;path=2001_2008_2047">Sofa
-                                        Beds</a></li>
-                                <li><a href="indexb1b6.html?route=product/category&amp;path=2001_2008_2048">Sofa
-                                        Suites</a></li>
-                                <li><a href="indexbfae.html?route=product/category&amp;path=2001_2008_2049">Corner
-                                        Sofas</a></li>
-                                <li><a href="indexc27d.html?route=product/category&amp;path=2001_2008_2050">Leather
-                                        Sofas</a></li>
-                            </ul>
-
-                        </li>
-                        <li><a href="index2348.html?route=product/category&amp;path=2001_2009">Chairs</a>
-                            <ul>
-                                <li><a
-                                        href="indexe1fe.html?route=product/category&amp;path=2001_2009_2051">Recliner</a>
-                                </li>
-                                <li><a href="index69e7.html?route=product/category&amp;path=2001_2009_2052">Arm
-                                        Chairs</a></li>
-                                <li><a href="index1281.html?route=product/category&amp;path=2001_2009_2053">Folding
-                                        Chairs</a></li>
-                                <li><a href="index5ccc.html?route=product/category&amp;path=2001_2009_2054">Metal
-                                        Chairs</a></li>
-                            </ul>
-
-                        </li>
-                        <li><a href="index0cb5.html?route=product/category&amp;path=2001_2010">Tables</a>
-                            <ul>
-                                <li><a href="index21d7.html?route=product/category&amp;path=2001_2010_2055">Side
-                                        Tables</a></li>
-                                <li><a href="indexd333.html?route=product/category&amp;path=2001_2010_2056">Console
-                                        Tables</a></li>
-                                <li><a href="index99f0.html?route=product/category&amp;path=2001_2010_2057">Set Of
-                                        Tables</a></li>
-                                <li><a href="index9e6b.html?route=product/category&amp;path=2001_2010_2058">Coffee
-                                        Tables</a></li>
-                            </ul>
-
-                        </li>
-                        <li><a href="index2dbc.html?route=product/category&amp;path=2001_2011">Bean Bags</a>
-                            <ul>
-                                <li><a href="index7a5d.html?route=product/category&amp;path=2001_2011_2059">Round</a>
-                                </li>
-                                <li><a href="indexfa31.html?route=product/category&amp;path=2001_2011_2060">Square</a>
-                                </li>
-                                <li><a href="index64e0.html?route=product/category&amp;path=2001_2011_2061">Novelty</a>
-                                </li>
-                                <li><a
-                                        href="index6569.html?route=product/category&amp;path=2001_2011_2062">Elongated</a>
-                                </li>
-                            </ul>
-
-                        </li>
-                        <li><a href="index9baf.html?route=product/category&amp;path=2001_2012">Stools</a>
-                            <ul>
-                                <li><a href="indexf629.html?route=product/category&amp;path=2001_2012_2063">Folding</a>
-                                </li>
-                                <li><a href="indexe224.html?route=product/category&amp;path=2001_2012_2064">Iron</a>
-                                </li>
-                                <li><a
-                                        href="index52cb.html?route=product/category&amp;path=2001_2012_2065">Designer</a>
-                                </li>
-                                <li><a href="index131e.html?route=product/category&amp;path=2001_2012_2066">Wood</a>
-                                </li>
-                            </ul>
-
-                        </li>
                     </ul>
                 </li>
-                <li><a href="indexdb51.html?route=product/category&amp;path=2002">Dining &amp; Bar</a>
-                    <ul>
-                        <li><a href="indexab39.html?route=product/category&amp;path=2002_2013">Dining Table Sets</a>
-                            <ul>
-                                <li><a href="index56a0.html?route=product/category&amp;path=2002_2013_2067">Two
-                                        Seater</a></li>
-                                <li><a href="indexc300.html?route=product/category&amp;path=2002_2013_2068">Four
-                                        Seater</a></li>
-                                <li><a href="index6642.html?route=product/category&amp;path=2002_2013_2069">Six
-                                        Seater</a></li>
-                                <li><a href="index597c.html?route=product/category&amp;path=2002_2013_2070">Eight
-                                        Seater</a></li>
-                            </ul>
-
-                        </li>
-                        <li><a href="indexe549.html?route=product/category&amp;path=2002_2014">Dining Tables </a>
-                            <ul>
-                                <li><a
-                                        href="index423d.html?route=product/category&amp;path=2002_2014_2071">Contemporary</a>
-                                </li>
-                                <li><a href="index0fa8.html?route=product/category&amp;path=2002_2014_2072">Modern</a>
-                                </li>
-                                <li><a
-                                        href="index2a1b.html?route=product/category&amp;path=2002_2014_2073">Eclectic</a>
-                                </li>
-                                <li><a
-                                        href="index9534.html?route=product/category&amp;path=2002_2014_2074">Colonial</a>
-                                </li>
-                            </ul>
-
-                        </li>
-                        <li><a href="index8f2f.html?route=product/category&amp;path=2002_2015">Dining Chairs</a>
-                            <ul>
-                                <li><a
-                                        href="index6102.html?route=product/category&amp;path=2002_2015_2075">Contemporary</a>
-                                </li>
-                                <li><a href="indexc9b9.html?route=product/category&amp;path=2002_2015_2076">Modern</a>
-                                </li>
-                                <li><a
-                                        href="index60de.html?route=product/category&amp;path=2002_2015_2077">Eclectic</a>
-                                </li>
-                                <li><a
-                                        href="index47c9.html?route=product/category&amp;path=2002_2015_2078">Colonial</a>
-                                </li>
-                            </ul>
-
-                        </li>
-                        <li><a href="index9941.html?route=product/category&amp;path=2002_2016">Sideboards</a>
-                            <ul>
-                                <li><a
-                                        href="index8f4e.html?route=product/category&amp;path=2002_2016_2079">Cabinets</a>
-                                </li>
-                                <li><a href="index7d7d.html?route=product/category&amp;path=2002_2016_2080">Drawers</a>
-                                </li>
-                                <li><a href="indexad14.html?route=product/category&amp;path=2002_2016_2081">Modern</a>
-                                </li>
-                                <li><a href="indexa813.html?route=product/category&amp;path=2002_2016_2082">Glass</a>
-                                </li>
-                            </ul>
-
-                        </li>
-                        <li><a href="index970a.html?route=product/category&amp;path=2002_2017">Bar Stools</a>
-                            <ul>
-                                <li><a
-                                        href="index89cb.html?route=product/category&amp;path=2002_2017_2083">Adjustable</a>
-                                </li>
-                                <li><a href="indexa856.html?route=product/category&amp;path=2002_2017_2084">Swivel</a>
-                                </li>
-                                <li><a href="index8bc9.html?route=product/category&amp;path=2002_2017_2085">Bar
-                                        Height</a></li>
-                                <li><a href="indexedba.html?route=product/category&amp;path=2002_2017_2086">Counter
-                                        Height</a></li>
-                            </ul>
-
-                        </li>
-                        <li><a href="indexf07e.html?route=product/category&amp;path=2002_2018">Serving Carts</a>
-                            <ul>
-                                <li><a href="index9eca.html?route=product/category&amp;path=2002_2018_2087">Glass</a>
-                                </li>
-                                <li><a href="index8b5c.html?route=product/category&amp;path=2002_2018_2088">Steel</a>
-                                </li>
-                                <li><a
-                                        href="index971e.html?route=product/category&amp;path=2002_2018_2089">Traditional</a>
-                                </li>
-                                <li><a href="index54ad.html?route=product/category&amp;path=2002_2018_2090">Modern</a>
-                                </li>
-                            </ul>
-
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="index0861.html?route=product/category&amp;path=2003">Bedroom</a>
-                    <ul>
-                        <li><a href="index48b4.html?route=product/category&amp;path=2003_2019">Beds</a>
-                            <ul>
-                                <li><a href="index5d29.html?route=product/category&amp;path=2003_2019_2091">Kids
-                                        Beds</a></li>
-                                <li><a href="indexf186.html?route=product/category&amp;path=2003_2019_2092">Single
-                                        Beds</a></li>
-                                <li><a href="indexf073.html?route=product/category&amp;path=2003_2019_2093">Double
-                                        Beds</a></li>
-                                <li><a href="indexa3b3.html?route=product/category&amp;path=2003_2019_2094">Kingsize
-                                        Beds</a></li>
-                            </ul>
-
-                        </li>
-                        <li><a href="index16ee.html?route=product/category&amp;path=2003_2020">Dressing Tables</a>
-                            <ul>
-                                <li><a
-                                        href="indexa5ed.html?route=product/category&amp;path=2003_2020_2095">Traditional</a>
-                                </li>
-                                <li><a href="index24b1.html?route=product/category&amp;path=2003_2020_2096">Modern</a>
-                                </li>
-                                <li><a href="index4f73.html?route=product/category&amp;path=2003_2020_2097">Glam</a>
-                                </li>
-                                <li><a
-                                        href="index876a.html?route=product/category&amp;path=2003_2020_2098">Contemporary</a>
-                                </li>
-                            </ul>
-
-                        </li>
-                        <li><a href="indexf62b.html?route=product/category&amp;path=2003_2021">Wardrobes</a>
-                            <ul>
-                                <li><a href="index118a.html?route=product/category&amp;path=2003_2021_2099">Fitted</a>
-                                </li>
-                                <li><a href="index35ec.html?route=product/category&amp;path=2003_2021_2100">Sliding</a>
-                                </li>
-                                <li><a
-                                        href="index5060.html?route=product/category&amp;path=2003_2021_2101">Cupboard</a>
-                                </li>
-                                <li><a
-                                        href="index6a37.html?route=product/category&amp;path=2003_2021_2102">Mirrored</a>
-                                </li>
-                            </ul>
-
-                        </li>
-                        <li><a href="index6674.html?route=product/category&amp;path=2003_2022">Mattresses</a>
-                            <ul>
-                                <li><a href="index65c1.html?route=product/category&amp;path=2003_2022_2103">Single</a>
-                                </li>
-                                <li><a href="index8bb3.html?route=product/category&amp;path=2003_2022_2104">Double</a>
-                                </li>
-                                <li><a
-                                        href="index5f14.html?route=product/category&amp;path=2003_2022_2105">Kingsize</a>
-                                </li>
-                                <li><a href="index090a.html?route=product/category&amp;path=2003_2022_2106">Futon</a>
-                                </li>
-                            </ul>
-
-                        </li>
-                        <li><a href="index6934.html?route=product/category&amp;path=2003_2023">Bedside Tables</a>
-                            <ul>
-                                <li><a
-                                        href="indexc4fd.html?route=product/category&amp;path=2003_2023_2107">Contemporary</a>
-                                </li>
-                                <li><a href="index09d4.html?route=product/category&amp;path=2003_2023_2108">Modern</a>
-                                </li>
-                                <li><a
-                                        href="index9331.html?route=product/category&amp;path=2003_2023_2109">Eclectic</a>
-                                </li>
-                                <li><a
-                                        href="indexbd8e.html?route=product/category&amp;path=2003_2023_2110">Colonial</a>
-                                </li>
-                            </ul>
-
-                        </li>
-                        <li><a href="index0190.html?route=product/category&amp;path=2003_2024">Nightstands</a>
-                            <ul>
-                                <li><a href="indexb5cc.html?route=product/category&amp;path=2003_2024_2111">Wood</a>
-                                </li>
-                                <li><a href="index0a6d.html?route=product/category&amp;path=2003_2024_2112">Metal</a>
-                                </li>
-                                <li><a href="indexb7af.html?route=product/category&amp;path=2003_2024_2113">Plastic</a>
-                                </li>
-                                <li><a href="index93cc.html?route=product/category&amp;path=2003_2024_2114">Glass</a>
-                                </li>
-                            </ul>
-
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="indexeaf6.html?route=product/category&amp;path=2004">Kitchen</a>
-                    <ul>
-                        <li><a href="indexca2e.html?route=product/category&amp;path=2004_2025">Cabinets</a>
-                            <ul>
-                                <li><a href="index1a97.html?route=product/category&amp;path=2004_2025_2115">Shaker</a>
-                                </li>
-                                <li><a
-                                        href="index66dc.html?route=product/category&amp;path=2004_2025_2116">Louvered</a>
-                                </li>
-                                <li><a href="index4642.html?route=product/category&amp;path=2004_2025_2117">Flat</a>
-                                </li>
-                                <li><a href="indexe616.html?route=product/category&amp;path=2004_2025_2118">Inset</a>
-                                </li>
-                            </ul>
-
-                        </li>
-                        <li><a href="index7800.html?route=product/category&amp;path=2004_2026">Wall Units</a>
-                            <ul>
-                                <li><a href="indexe880.html?route=product/category&amp;path=2004_2026_2119">Single</a>
-                                </li>
-                                <li><a href="indexe7e8.html?route=product/category&amp;path=2004_2026_2120">Double</a>
-                                </li>
-                                <li><a href="indexb146.html?route=product/category&amp;path=2004_2026_2121">Top
-                                        boxes</a></li>
-                                <li><a
-                                        href="indexba67.html?route=product/category&amp;path=2004_2026_2122">Bi-folding</a>
-                                </li>
-                            </ul>
-
-                        </li>
-                        <li><a href="indexba53.html?route=product/category&amp;path=2004_2027">Trolleys</a>
-                            <ul>
-                                <li><a href="indexc658.html?route=product/category&amp;path=2004_2027_2123">Stainless
-                                        Steel</a></li>
-                                <li><a href="indexb8e3.html?route=product/category&amp;path=2004_2027_2124">Pine
-                                        Wood</a></li>
-                                <li><a
-                                        href="indexe86a.html?route=product/category&amp;path=2004_2027_2125">Platform</a>
-                                </li>
-                                <li><a
-                                        href="index09aa.html?route=product/category&amp;path=2004_2027_2126">Cylinder</a>
-                                </li>
-                            </ul>
-
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="index8b16.html?route=product/category&amp;path=2005">Home Improvement</a>
+                <li><a href="#">Home Improvement</a>
                 </li>
             </ul>
             <div class="top-links">
 
                 <ul class="links">
                     <li><a href="indexe223.html?route=account/account" title="My Account">My Account</a></li>
-                    <li><a href="indexe223.html?route=account/wishlist" id="wishlist-total" title="Wish List">Wish
                             List</a></li>
-                    <li><a href="index630e.html?route=checkout/checkout" title="Checkout">Checkout</a></li>
-                    <li><a href="indexe637.html?route=magikblog/article"><span>Blog</span></a></li>
+                    <li><a href="/checkout" title="Checkout">Checkout</a></li>
+                    <li><a href="#"><span>Blog</span></a></li>
                     <?php 
                          $customer_id = Session::get('CID');
                          $Cusername = Session::get('Cusername');

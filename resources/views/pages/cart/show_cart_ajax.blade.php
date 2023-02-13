@@ -58,7 +58,7 @@
                                                     <td class="text-right">
                                                         ${{ number_format($cart['product_price'], 0, ',', '.') }}</td>
                                                     <td class="text-right">
-                                                        ${{ number_format($cart['product_price'], 0, ',', '.') }}</td>
+                                                        ${{ number_format($subtotal, 0, ',', '.') }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

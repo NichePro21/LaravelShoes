@@ -1,12 +1,25 @@
 @extends('layoutcus')
-@section('header')
-   
+@section('breadcrumbs')
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <ul>
+                      <li>                            <a href="/">Home</a>
+                        </li>
+                      <li><span>/</span>                            <a href="/my-account">Account</a>
+                        </li>
+                      <li><span>/</span>                            <strong>Order History</strong>            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
     @endsection
     @section('content')
-  
-                @if (count($AllOrderById))
+    @if (count($getorder))
                 
-                @foreach ($AllOrderById as $key => $value)
                 <div class="main-container col2-right-layout">
                     <div class="main container">
                       <div class="row">                <div id="content" class="col-sm-9">
@@ -20,24 +33,31 @@
                               <thead>
                                 <tr>
                                   <td class="text-right">Order ID</td>
-                                  <td class="text-left">Customer</td>
-                                  <td class="text-right">No. of Products</td>
                                   <td class="text-left">Status</td>
-                                  <td class="text-right">Total</td>
                                   <td class="text-left">Date Added</td>
                                   <td></td>
                                 </tr>
                               </thead>
                               <tbody>
+                                
+                
+                @foreach ($getorder as $key => $val)
+                  
                                             <tr>
-                                  <td class="text-right">#151</td>
-                                  <td class="text-left">hoangshop hoangshop</td>
-                                  <td class="text-right">1</td>
+                                  <td class="text-right">#{{$val->order_id}}</td>
+                                  @if($val->order_status==1)
                                   <td class="text-left">Pending</td>
-                                  <td class="text-right">$205.00</td>
-                                  <td class="text-left">09/02/2023</td>
-                                  <td class="text-right"><a href="http://brezzademo3.magikthemes.com/index.php?route=account/order/info&amp;order_id=151" data-toggle="tooltip" title="" class="btn btn-info" data-original-title="View"><i class="fa fa-eye"></i></a></td>
+                                  @elseif($val->order_status==2)
+                                  <td class="text-left">Success</td>
+                                  @else
+                                  <td class="text-left">Cancel</td>
+                                  @endif
+                                  <td class="text-left">{{$val->order_date}}</td>
+                                  <td class="text-right"><a href="/my-account/view-orders/{{$val->order_code}}" data-toggle="tooltip" title="" class="btn btn-info" data-original-title="View"><i class="fa fa-eye"></i></a></td>
                                 </tr>
+                                 
+                                @endforeach
+
                                           </tbody>
                             </table>
                           </div>
@@ -45,14 +65,14 @@
                                 <div class="buttons clearfix">
                             <div class="pull-right">
                               <!-- <a href="" class="btn btn-primary"></a> -->
-                              <button onclick="window.location='http://brezzademo3.magikthemes.com/index.php?route=account/account';" class="button continue">Continue</button>
+                              <button onclick="window.location='/my-account'" class="button continue">Back</button>
                             </div>
                           </div>
                           </div></div></div>
                     </div>
                     </div>
                     </div>
-                @endforeach
+                
                 @else
                 <div class="main-container col2-right-layout">
                     <div class="main container">

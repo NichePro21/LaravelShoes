@@ -1,6 +1,11 @@
 @extends('admin_layout');
 @section('admin_content')
-
+<div class="row bg-title">
+  <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+      <h4 class="page-title">Brand Layouts</h4> </div>
+  
+  <!-- /.col-lg-12 -->
+</div>
                         <div class="white-box">
                             <h3 class="box-title">Brand Table</h3>
                           <div class="table-responsive">

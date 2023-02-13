@@ -115,39 +115,30 @@
                     <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Brand<span class="fa arrow"></span>
                         <span class="label label-rouded label-purple pull-right">2</span></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="{{URL::to('/add-brand')}}"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Thêm Thương Hiệu</span></a></li>
-                            <li><a href="{{URL::to('/all-brand')}}"><i class="fa-fw">S</i><span class="hide-menu"> Hiển Thị</span></a></li>
+                            <li><a href="{{URL::to('/admin/add-brand')}}"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Thêm Thương Hiệu</span></a></li>
+                            <li><a href="{{URL::to('/admin/all-brand')}}"><i class="fa-fw">S</i><span class="hide-menu"> Hiển Thị</span></a></li>
                         </ul>
                     </li>
                     <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Categories<span class="fa arrow"></span>
                         <span class="label label-rouded label-purple pull-right">2</span></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="{{URL::to('/add-category')}}"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Thêm Categories</span></a></li>
-                            <li><a href="{{URL::to('/all-category')}}"><i class="fa-fw">S</i><span class="hide-menu"> Hiển Thị Categories</span></a></li>
+                            <li><a href="{{URL::to('/admin/add-category')}}"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Thêm Categories</span></a></li>
+                            <li><a href="{{URL::to('/admin/all-category')}}"><i class="fa-fw">S</i><span class="hide-menu"> Hiển Thị Categories</span></a></li>
                         </ul>
                     </li>
                     <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Product<span class="fa arrow"></span>
                         <span class="label label-rouded label-purple pull-right">3</span></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="{{URL::to('/add-product')}}"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Add New Product</span></a></li>
-                            <li><a href="{{URL::to('/all-product')}}"><i class="fa-fw">S</i><span class="hide-menu"> All Product</span></a></li>
+                            <li><a href="{{URL::to('/admin/add-product')}}"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Add New Product</span></a></li>
+                            <li><a href="{{URL::to('/admin/all-product')}}"><i class="fa-fw">S</i><span class="hide-menu"> All Product</span></a></li>
                             {{-- <li><a href="{{URL::to('/add-color')}}"><i class="fa-fw">S</i><span class="hide-menu"> Add Color</span></a></li>
                             <li><a href="{{URL::to('/all-color')}}"><i class="fa-fw">S</i><span class="hide-menu"> All Color</span></a></li>
                        --}} </ul> 
                     </li>
-
-                    <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Color<span class="fa arrow"></span>
-                        <span class="label label-rouded label-purple pull-right">2</span></span></a>
-                        <ul class="nav nav-second-level">
-                           <li><a href="{{URL::to('/add-color')}}"><i class="fa-fw">@</i><span class="hide-menu"> Add Color</span></a></li>
-                            <li><a href="{{URL::to('/all-color')}}"><i class="fa-fw">@</i><span class="hide-menu"> All Color</span></a></li>
-                       </ul> 
-                    </li>
-
                     <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Orders<span class="fa arrow"></span>
                         <span class="label label-rouded label-purple pull-right">2</span></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="{{URL::to('/admin-view-order')}}"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">View Orders</span></a></li>
+                            <li><a href="{{URL::to('/admin/all-order')}}"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">View Orders</span></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -159,7 +150,6 @@
             <div class="container-fluid">
                 @yield('admin_content')
             </div>
-            <!-- /.container-fluid -->
             <footer class="footer text-center"> 2021 &copy; </footer>
         </div>
         <!-- /#page-wrapper -->
@@ -211,7 +201,59 @@
                 document.getElementById('convert_slug').value = slug;
             }
              
-    
+        $('.order_details').change(function() {
+            var order_status = $(this).val();
+            var order_id = $(this).children(":selected").attr("id");
+            var _token = $('input[name="_token"]').val();
+           // alert(order_id);
+            //lay ra so luong
+            quantity = [];
+            $("input[name='product_sales_quantity']").each(function() {
+                quantity.push($(this).val());
+            });
+            //lay ra product id
+            order_product_id = [];
+            $("input[name='order_product_id']").each(function() {
+                order_product_id.push($(this).val());
+            });
+            j = 0;
+            for (i = 0; i < order_product_id.length; i++) {
+                //so luong khach dat
+                var order_qty = $('.order_qty_' + order_product_id[i]).val();
+                //so luong ton kho
+                var order_qty_storage = $('.order_qty_storage_' + order_product_id[i]).val();
+
+                if (parseInt(order_qty) > parseInt(order_qty_storage)) {
+                    j = j + 1;
+                    if (j == 1) {
+                        alert('Số lượng bán trong kho không đủ');
+                    }
+                    $('.color_qty_' + order_product_id[i]).css('background', '#000');
+                }
+            }
+
+            if (j == 0) {
+
+                $.ajax({
+                    url: '/update-order',
+                    method: 'POST',
+                    data: {
+                        _token: _token,
+                        order_status: order_status,
+                        order_id: order_id,
+                        quantity: quantity,
+                        order_product_id: order_product_id
+                    },
+                    success: function() {
+                        alert('Success');
+                        location.reload();
+                        alert(data);
+                    }
+                });
+
+            }
+
+        });
        
        
     </script>

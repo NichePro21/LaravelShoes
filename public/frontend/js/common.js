@@ -881,6 +881,43 @@ function Deletecart(id) {
 
 	});
 }
+//checkout
+$(document).ready(function () {
+
+	$('.add-to-checkout').click(function () {
+		//console.log("something");
+		var id = $(this).data('id_checkout');
+		// alert(id);
+		var cart_product_id = $('.cart_product_id_' + id).val();
+		var cart_product_name = $('.cart_product_name_' + id).val();
+		var cart_product_image = $('.cart_product_image_' + id).val();
+		var cart_product_quantity = $('.cart_product_quantity_' + id).val();
+		var cart_product_price = $('.cart_product_price_' + id).val();
+		var cart_product_qty = $('.cart_product_qty_' + id).val();
+		//var cart_product_size = $('.cart_product_size_' + id).val();
+		var _token = $('input[name="_token"]').val();
+		var res_size = $('.cart_product_size_' + id).val();
+		var cart_product_size = res_size[0];
+		//alert(cart_product_size)
+		//alert(cart_product_size)
+		// if (parseInt(cart_product_qty) > parseInt(cart_product_quantity)) {
+		// 	alert('Làm ơn đặt nhỏ hơn ' + cart_product_quantity);
+		// } else {
+
+			$.ajax({
+				url: '/add-cart-ajax',
+				method: 'POST',
+				data: { cart_product_id: cart_product_id,cart_product_size:cart_product_size, cart_product_name: cart_product_name, cart_product_image: cart_product_image, cart_product_price: cart_product_price, cart_product_qty: cart_product_qty, _token: _token, cart_product_quantity: cart_product_quantity },
+				success:function(){
+					//alert(data);
+					//show_quick_cart();
+					alert('ok');
+				 }
+			});
+			
+		//}
+	});
+});
 //homepage category brand cart
 $(document).ready(function () {
 

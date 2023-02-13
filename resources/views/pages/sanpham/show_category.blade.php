@@ -35,9 +35,8 @@
                                                     <img src="http://brezzademo3.magikthemes.com/image/cache/catalog/furniture/category-img1-915x390.jpg"
                                                         alt="Slider Image1" class="img-responsive">
                                                     <div class="cat-img-title cat-bg cat-box">
-                                                        <div class="small-tag">Fashion 2016</div>
-                                                        <h2 class="cat-heading">Women Collection</h2>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                                                        <div class="small-tag">Fashion 2023</div>
+                                                        <h2 class="cat-heading">Shoes Collection</h2>
                                                     </div>
                                                 </div>
                                             </div>
@@ -255,7 +254,7 @@
                         </ul>
                 </div>
               </div>    <div>
-                  <div class="hot-banner"><img alt="banner" src="catalog/view/theme/breezademo3/image/hot-trends-banner.jpg"></div></div>
+                  <div class="hot-banner"><img alt="banner" src="https://img.freepik.com/premium-vector/shoes-brand-product-banner_252779-535.jpg"></div></div>
                   <div class="panel panel-default">
                 <div class="panel-heading">Refine Search</div>
                 <div class="list-group">
@@ -332,51 +331,6 @@
               
                   <div class="product-layout">
                   <div class="product-thumb transition">
-                    <div class="image"><a href="http://brezzademo3.magikthemes.com/index.php?route=product/product&amp;product_id=2026"><img src="http://brezzademo3.magikthemes.com/image/cache/catalog/furniture/product26-700x850.jpg" alt="Cozy Krafts Solid TV Table" title="Cozy Krafts Solid TV Table" class="img-responsive"></a></div>
-                    <div class="caption">
-                      <h4><a href="http://brezzademo3.magikthemes.com/index.php?route=product/product&amp;product_id=2026">Cozy Krafts Solid TV Table</a></h4>
-              
-              
-                              <p class="price">
-                                  <span class="price-new">$400.00</span> <span class="price-old">$500.00</span>
-                                            <span class="price-tax">Ex Tax: $400.00</span>
-                                </p>
-                            </div>
-              
-                  </div>
-                </div>
-                  <div class="product-layout">
-                  <div class="product-thumb transition">
-                    <div class="image"><a href="http://brezzademo3.magikthemes.com/index.php?route=product/product&amp;product_id=2025"><img src="http://brezzademo3.magikthemes.com/image/cache/catalog/furniture/product25-700x850.jpg" alt="DecorNation Floating Wall Shelf" title="DecorNation Floating Wall Shelf" class="img-responsive"></a></div>
-                    <div class="caption">
-                      <h4><a href="http://brezzademo3.magikthemes.com/index.php?route=product/product&amp;product_id=2025">DecorNation Floating Wall Shelf</a></h4>
-              
-              
-                              <p class="price">
-                                  <span class="price-new">$1,600.00</span> <span class="price-old">$2,000.00</span>
-                                            <span class="price-tax">Ex Tax: $1,600.00</span>
-                                </p>
-                            </div>
-              
-                  </div>
-                </div>
-                  <div class="product-layout">
-                  <div class="product-thumb transition">
-                    <div class="image"><a href="http://brezzademo3.magikthemes.com/index.php?route=product/product&amp;product_id=2022"><img src="http://brezzademo3.magikthemes.com/image/cache/catalog/furniture/product22-700x850.jpg" alt="Grandpa Rocking Chair" title="Grandpa Rocking Chair" class="img-responsive"></a></div>
-                    <div class="caption">
-                      <h4><a href="http://brezzademo3.magikthemes.com/index.php?route=product/product&amp;product_id=2022">Grandpa Rocking Chair</a></h4>
-              
-              
-                              <p class="price">
-                                  <span class="price-new">$1,800.00</span> <span class="price-old">$2,000.00</span>
-                                            <span class="price-tax">Ex Tax: $1,800.00</span>
-                                </p>
-                            </div>
-              
-                  </div>
-                </div>
-                  <div class="product-layout">
-                  <div class="product-thumb transition">
                     <div class="image"><a href="http://brezzademo3.magikthemes.com/index.php?route=product/product&amp;product_id=2024"><img src="http://brezzademo3.magikthemes.com/image/cache/catalog/furniture/product24-700x850.jpg" alt="Nitraa Eco 3 Door Wardrobe" title="Nitraa Eco 3 Door Wardrobe" class="img-responsive"></a></div>
                     <div class="caption">
                       <h4><a href="http://brezzademo3.magikthemes.com/index.php?route=product/product&amp;product_id=2024">Nitraa Eco 3 Door Wardrobe</a></h4>
@@ -409,15 +363,13 @@
                                 
                                 <div class="item"> 
                                   <a href="" target="_blank" title="50% OFF">
-                                  <img src="http://brezzademo3.magikthemes.com/image/cache/catalog/furniture/slide3-360x488.jpg" data-bgposition="left top" data-bgfit="cover" data-bgrepeat="no-repeat" title="50% OFF" alt="50% OFF">
+                                  <img width="360px" height="488px" src="https://img.freepik.com/premium-vector/shoes-brand-product-banner_252779-535.jpg" data-bgposition="left top" data-bgfit="cover" data-bgrepeat="no-repeat" title="50% OFF" alt="50% OFF">
                                   </a>
                                   <div class="carousel-caption">
                                     <h3>
                                       <a href="" target="_blank" title="50% OFF">
                                         50% OFF                        </a>
                                     </h3>
-                                    <p></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                      <a class="link" href="#">Buy Now</a><p></p>
                                   </div>
                                 </div>
               
@@ -425,15 +377,13 @@
                                 
                                 <div class="item"> 
                                   <a href="" target="_blank" title="Hot Collection">
-                                  <img src="http://brezzademo3.magikthemes.com/image/cache/catalog/furniture/slide1-360x488.jpg" data-bgposition="left top" data-bgfit="cover" data-bgrepeat="no-repeat" title="Hot Collection" alt="Hot Collection">
+                                  <img src="http://theskateboardersjournal.com/app/uploads/2020/12/SJ42-Cover-WEB-USE-360x488.jpg" data-bgposition="left top" data-bgfit="cover" data-bgrepeat="no-repeat" title="Hot Collection" alt="Hot Collection">
                                   </a>
                                   <div class="carousel-caption">
                                     <h3>
                                       <a href="" target="_blank" title="Hot Collection">
                                         Hot Collection                        </a>
                                     </h3>
-                                    <p></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                      <a class="link" href="#">Buy Now</a><p></p>
                                   </div>
                                 </div>
               
@@ -441,15 +391,14 @@
                                 
                                 <div class="item active"> 
                                   <a href="" target="_blank" title="Summer Collection">
-                                  <img src="http://brezzademo3.magikthemes.com/image/cache/catalog/furniture/slide2-360x488.jpg" data-bgposition="left top" data-bgfit="cover" data-bgrepeat="no-repeat" title="Summer Collection" alt="Summer Collection">
+                                  <img src="https://www.elhombre.com.br/wp-content/uploads/2022/11/Reserva-Go-Halls-360x488.webp" data-bgposition="left top" data-bgfit="cover" data-bgrepeat="no-repeat" title="Summer Collection" alt="Summer Collection">
                                   </a>
                                   <div class="carousel-caption">
                                     <h3>
                                       <a href="" target="_blank" title="Summer Collection">
                                         Summer Collection                        </a>
                                     </h3>
-                                    <p></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                      <a class="link" href="#">Buy Now</a><p></p>
+                                  
                                   </div>
                                 </div>
               
