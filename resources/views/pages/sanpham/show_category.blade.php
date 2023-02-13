@@ -82,60 +82,15 @@
                                 <div class="toolbar">
 
 
-                                    <div id="sort-by">
+                                    <div id="sort-by" name="sort-by">
                                         <label class="left">Sort By:</label>
-                                        <select id="input-sort" class="form-control" onchange="location = this.value;">
-                                            <option
-                                                value="http://brezzademo3.magikthemes.com/index.php?route=product/category&amp;path=2001&amp;sort=p.sort_order&amp;order=ASC"
-                                                selected="selected">Default</option>
-                                            <option
-                                                value="http://brezzademo3.magikthemes.com/index.php?route=product/category&amp;path=2001&amp;sort=pd.name&amp;order=ASC">
-                                                Name (A - Z)</option>
-                                            <option
-                                                value="http://brezzademo3.magikthemes.com/index.php?route=product/category&amp;path=2001&amp;sort=pd.name&amp;order=DESC">
-                                                Name (Z - A)</option>
-                                            <option
-                                                value="http://brezzademo3.magikthemes.com/index.php?route=product/category&amp;path=2001&amp;sort=p.price&amp;order=ASC">
-                                                Price (Low &gt; High)</option>
-                                            <option
-                                                value="http://brezzademo3.magikthemes.com/index.php?route=product/category&amp;path=2001&amp;sort=p.price&amp;order=DESC">
-                                                Price (High &gt; Low)</option>
-                                            <option
-                                                value="http://brezzademo3.magikthemes.com/index.php?route=product/category&amp;path=2001&amp;sort=rating&amp;order=DESC">
-                                                Rating (Highest)</option>
-                                            <option
-                                                value="http://brezzademo3.magikthemes.com/index.php?route=product/category&amp;path=2001&amp;sort=rating&amp;order=ASC">
-                                                Rating (Lowest)</option>
-                                            <option
-                                                value="http://brezzademo3.magikthemes.com/index.php?route=product/category&amp;path=2001&amp;sort=p.model&amp;order=ASC">
-                                                Model (A - Z)</option>
-                                            <option
-                                                value="http://brezzademo3.magikthemes.com/index.php?route=product/category&amp;path=2001&amp;sort=p.model&amp;order=DESC">
-                                                Model (Z - A)</option>
+                                        <select name="sort" id="sort" class="form-control" onchange="location = this.value;">
+                                            <option value="{{Request::url()}}?sort-by=none">--Lọc theo--</option>
+                                            <option value="{{Request::url()}}?sort-by=tang_dan">--Giá tăng dần--</option>
+                                            <option value="{{Request::url()}}?sort-by=giam_dan">--Giá giảm dần--</option>
+                                            <option value="{{Request::url()}}?sort-by=kytu_az">Lọc theo tên A đến Z</option>
+                                            <option value="{{Request::url()}}?sort-by=kytu_za">Lọc theo tên Z đến A</option>
                                         </select>
-                                    </div>
-
-                                    <div class="pager">
-                                        <div id="limiter">
-                                            <label>Show:</label>
-                                            <select id="input-limit" class="form-control" onchange="location = this.value;">
-                                                <option
-                                                    value="http://brezzademo3.magikthemes.com/index.php?route=product/category&amp;path=2001&amp;limit=15"
-                                                    selected="selected">15</option>
-                                                <option
-                                                    value="http://brezzademo3.magikthemes.com/index.php?route=product/category&amp;path=2001&amp;limit=25">
-                                                    25</option>
-                                                <option
-                                                    value="http://brezzademo3.magikthemes.com/index.php?route=product/category&amp;path=2001&amp;limit=50">
-                                                    50</option>
-                                                <option
-                                                    value="http://brezzademo3.magikthemes.com/index.php?route=product/category&amp;path=2001&amp;limit=75">
-                                                    75</option>
-                                                <option
-                                                    value="http://brezzademo3.magikthemes.com/index.php?route=product/category&amp;path=2001&amp;limit=100">
-                                                    100</option>
-                                            </select>
-                                        </div>
                                     </div>
 
                                 </div><!-- toolbar -->
@@ -255,98 +210,9 @@
                 </div>
               </div>    <div>
                   <div class="hot-banner"><img alt="banner" src="https://img.freepik.com/premium-vector/shoes-brand-product-banner_252779-535.jpg"></div></div>
-                  <div class="panel panel-default">
-                <div class="panel-heading">Refine Search</div>
-                <div class="list-group">
-                      <a class="list-group-item">Price</a>
-                  <div class="list-group-item">
-                    <div id="filter-group1">
-                              <div class="checkbox">
-                        <label>
-                                      <input type="checkbox" name="filter[]" value="21">
-                          100-1000 (2)                      </label>
-                      </div>
-                              <div class="checkbox">
-                        <label>
-                                      <input type="checkbox" name="filter[]" value="22">
-                          1000-1500 (2)                      </label>
-                      </div>
-                              <div class="checkbox">
-                        <label>
-                                      <input type="checkbox" name="filter[]" value="23">
-                          1500-2000 (2)                      </label>
-                      </div>
-                              <div class="checkbox">
-                        <label>
-                                      <input type="checkbox" name="filter[]" value="24">
-                          2000-3000 (2)                      </label>
-                      </div>
-                            </div>
-                  </div>
-                      <a class="list-group-item">Material</a>
-                  <div class="list-group-item">
-                    <div id="filter-group5">
-                              <div class="checkbox">
-                        <label>
-                                      <input type="checkbox" name="filter[]" value="17">
-                          Wood (3)                      </label>
-                      </div>
-                              <div class="checkbox">
-                        <label>
-                                      <input type="checkbox" name="filter[]" value="18">
-                          Metal (3)                      </label>
-                      </div>
-                              <div class="checkbox">
-                        <label>
-                                      <input type="checkbox" name="filter[]" value="19">
-                          Leather (0)                      </label>
-                      </div>
-                              <div class="checkbox">
-                        <label>
-                                      <input type="checkbox" name="filter[]" value="20">
-                          Fabric (1)                      </label>
-                      </div>
-                            </div>
-                  </div>
-                    </div>
-                <div class="panel-footer text-right">
-                  <button type="button" id="button-filter" class="btn btn-primary">Refine Search</button>
-                 
-                </div>
-              </div>
-              <script type="text/javascript"><!--
-              $('#button-filter').on('click', function() {
-                filter = [];
-              
-                $('input[name^=\'filter\']:checked').each(function(element) {
-                  filter.push(this.value);
-                });
-              
-                location = 'http://brezzademo3.magikthemes.com/index.php?route=product/category&path=2001&filter=' + filter.join(',');
-              });
-              //--></script>
-                  <div class="panel panel-default special-products">
-              <div class="panel-heading">Specials</div>
-              
-              
-                  <div class="product-layout">
-                  <div class="product-thumb transition">
-                    <div class="image"><a href="http://brezzademo3.magikthemes.com/index.php?route=product/product&amp;product_id=2024"><img src="http://brezzademo3.magikthemes.com/image/cache/catalog/furniture/product24-700x850.jpg" alt="Nitraa Eco 3 Door Wardrobe" title="Nitraa Eco 3 Door Wardrobe" class="img-responsive"></a></div>
-                    <div class="caption">
-                      <h4><a href="http://brezzademo3.magikthemes.com/index.php?route=product/product&amp;product_id=2024">Nitraa Eco 3 Door Wardrobe</a></h4>
-              
-              
-                              <p class="price">
-                                  <span class="price-new">$90.00</span> <span class="price-old">$100.00</span>
-                                            <span class="price-tax">Ex Tax: $90.00</span>
-                                </p>
-                            </div>
-              
-                  </div>
-                </div>
                 
               
-              </div>    <div class="custom-slider">
+                    <div class="custom-slider">
                       <div>              
                           <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"> 
                               <!-- Indicators -->

@@ -201,7 +201,7 @@
                 document.getElementById('convert_slug').value = slug;
             }
              
-        $('.order_details').change(function() {
+        $('.selectpicker').change(function() {
             var order_status = $(this).val();
             var order_id = $(this).children(":selected").attr("id");
             var _token = $('input[name="_token"]').val();
@@ -247,7 +247,7 @@
                     success: function() {
                         alert('Success');
                         location.reload();
-                        alert(data);
+                        //alert(data);
                     }
                 });
 

@@ -76,12 +76,19 @@
                                             $i++;
                                             $subtotal = $details->product_price * $details->product_sales_quantity;
                                             $total += $subtotal;
+                                           // print_r($details);
                                         @endphp
                                 
                                         <tr>
                                             <td class="text-center">{{ $i }}</td>
                                             <td>{{ $details->product_name }}</td>
-                                            <td class="text-right">{{ $details->product_sales_quantity }}</td>
+                                    <input type="hidden" min="1" readonly {{$order_status==2 ? 'disabled' : ''}} class="order_qty_{{$details->product_id}}" value="{{$details->product_sales_quantity}}" name="product_sales_quantity">
+                                    <input type="hidden" name="order_qty_storage" class="order_qty_storage_{{$details->product_id}}" value="{{$details->product->product_quantity}}">
+
+                                    <input type="hidden" name="order_code" class="order_code" value="{{$details->order_code}}">
+
+                                    <input type="hidden" name="order_product_id" class="order_product_id" value="{{$details->product_id}}">
+                                            <td class="text-right order_qty_{{$details->product_id}}" name="product_sales_quantity">{{ $details->product_sales_quantity }}</td>
                                             <td class="text-right">
                                                 ${{ number_format($details->product_price, 0, ',', '.') }} </td>
                                             <td class="text-right"> ${{ number_format($subtotal, 0, ',', '.') }} </td>
@@ -106,12 +113,7 @@
                                         <form>
                                             @csrf
                                             
-                                    <input type="hidden" name="order_qty_storage" class="order_qty_{{$details->product_id}}" value="{{$details->product->product_quantity}}">
-                                    <input type="hidden" name="order_qty_storage" class="order_qty_storage_{{$details->product_id}}" value="{{$details->product->product_quantity}}">
-
-                                    <input type="hidden" name="order_code" class="order_code" value="{{$details->order_code}}">
-
-                                    <input type="hidden" name="order_product_id" class="order_product_id" value="{{$details->product_id}}">
+                                            
                                             <div class="col-sm-4">
                                                 <select class="form-control selectpicker order_details">
                 

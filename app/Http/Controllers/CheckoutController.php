@@ -142,6 +142,10 @@ class CheckoutController extends Controller
         $shipping->shipping_method = $data['shipping_method'];
         $shipping->CID = Session::get('CID');
         $shipping->shipping_email = $data['newEmail'];
+        if($shipping->shipping_name == null or $shipping->shipping_city == null or $shipping->shipping_ward == null or $shipping->shipping_phone == null or $shipping->shipping_address == null  or $shipping->shipping_email ==null){
+            $message = 'Check validate infomation';
+            return Redirect::to('/checkout')->with('message',$message);
+        }
         $shipping->save();
         $shipping_id = $shipping->shipping_id;
         $checkout_code = substr(md5(microtime()),rand(0,26),5);

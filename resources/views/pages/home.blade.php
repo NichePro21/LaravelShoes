@@ -146,7 +146,7 @@
                                         <div class="item-img">
                                             <div class="item-img-info">
                                                 <a class="product-image"
-                                                    href="{{$value->product_slug}}"
+                                                    href="/product/{{$value->product_slug}}"
                                                     title="{{$value->product_name}}">
                                                     <img src="{{ URL::to('/public/uploads/product/') }}/{{ $value->product_image }}"
                                                         alt="{{$value->product_name}}"
@@ -311,25 +311,26 @@
                                 </div>
                                 <div class="slider-items slider-width-col4 products-grid block-content">
                                     <!-- Item -->
+                                    @foreach($bestseller as $key => $value)
                                     <div class="item">
                                         <div class="item-inner">
 
                                             <div class="item-img">
                                                 <div class="item-img-info">
                                                     <a class="product-image"
-                                                        href="index8361.html?route=product/product&amp;product_id=2025"
-                                                        title="DecorNation Floating Wall Shelf">
-                                                        <img src="{{ URL::to('/public/frontend/cache/catalog/furniture/product25-700x850.jpg') }}"
-                                                            alt="DecorNation Floating Wall Shelf"
-                                                            title="DecorNation Floating Wall Shelf" />
+                                                        href="/product/{{$value->product_slug}}"
+                                                        title="{{$value->product_name}}">
+                                                        <img width="216px" height="270px" src="{{ URL::to('/public/uploads/product/') }}/{{ $value->product_image }}"
+                                                            alt="{{$value->product_name}}"
+                                                            title="{{$value->product_name}}" />
                                                     </a>
-                                                    <div class="sale-label sale-top-right">Sale</div>
+                                                    {{-- <div class="sale-label sale-top-right">Sale</div> --}}
                                                     <div class="box-hover">
                                                         <ul class="add-to-links">
                                                             <li>
-                                                                <a href="index06ee.html?route=product/quickview&amp;product_id=2025;"
+                                                                <a href="/product/{{$value->product_slug}}"
                                                                     class="link-quickview"
-                                                                    data-name="DecorNation Floating Wall Shelf">Quick
+                                                                    data-name="{{$value->product_name}}">Quick
                                                                     view</a>
                                                             </li>
 
@@ -347,8 +348,7 @@
                                                 <div class="info-inner">
                                                     <div class="item-title">
                                                         <a title="DecorNation Floating Wall Shelf"
-                                                            href="index8361.html?route=product/product&amp;product_id=2025">
-                                                            DecorNation Floating Wall... </a>
+                                                            href="/product/{{$value->product_slug}}">{{$value->product_name}} </a>
                                                     </div>
                                                     <div class="rating">
                                                         <div class="ratings">
@@ -371,19 +371,26 @@
                                                     <div class="item-content">
                                                         <div class="item-price">
                                                             <div class="price-box">
-
-                                                                <p class="old-price"><span class="price">$2,000.00</span>
-                                                                </p>
                                                                 <p class="special-price"><span
-                                                                        class="price">$1,600.00</span></p>
+                                                                        class="price">${{$value->product_price}}</span></p>
                                                             </div>
                                                         </div>
                                                         <div class="action">
+                                                            <form>
+                                                                <input type="hidden" value="{{$value->PID}}" data-id="{{$value->PID}}" class="PID{{$value->PID}}">
+                                                                <input type="hidden" value="{{$value->PID}}" name="cart_product_id" class="cart_product_id_{{$value->PID}}">
+                                                                @csrf
+                                                                <input type="hidden" value="{{$value->product_name}}" name="cart_product_name" class="cart_product_name_{{$value->PID}}">
+                                                                <input type="hidden" value="{{$value->product_size}}" name="cart_product_size" class="cart_product_size_{{$value->PID}}">
+                                                                <input type="hidden" value="{{$value->product_image}}" name="cart_product_image" class="cart_product_image_{{$value->PID}}">
+                                                                <input type="hidden" value="{{$value->product_quantity}}" name="cart_product_quantity" class="cart_product_quantity_{{$value->PID}}">
+                                                                <input type="hidden" value="{{$value->product_price}}" name="cart_product_price" class="cart_product_price_{{$value->PID}}">
+                                                                <input type="hidden" value="1" name="cart_product_qty" class="cart_product_qty_{{$value->PID}}">
                                                             <button type="button" title=""
                                                                 data-original-title="Add to Cart"
-                                                                class="button btn-cart link-cart" 
-                                                                onclick="mgk_hm_cart.add('2025');"><span>Add to
+                                                                class="button btn-cart link-cart add-to-oncart" data-id_product="{{ $value->PID }}"><span>Add to
                                                                     Cart</span></button>
+                                                            </form>
                                                         </div>
                                                     </div>
 
@@ -391,7 +398,7 @@
                                             </div> <!-- End Item info -->
                                         </div> <!-- End  Item inner-->
                                     </div> <!-- End Item -->
-
+@endforeach
                                 </div>
                             </div> <!-- featured -->
                         </div>
@@ -520,75 +527,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="blog-outer-container">
-                            <div class="blog-inner">
-                                <div class="row">
-
-                                    <div class="col-lg-6 col-md-6 col-sm-6 blog-preview_item">
-                                        <div class="entry-thumb image-hover2">
-                                            <a href="index97ec.html?route=magikblog/article/view&amp;mgkblogarticle_id=7">
-                                                <img src="{{ URL::to('/public/frontend/cache/catalog/furniture/blog-img1-915x420.jpg') }}"
-                                                    alt="Aliquam eget sapien placerta"
-                                                    title="Aliquam eget sapien placerta" /></a>
-                                        </div>
-                                        <div class="blog-preview_info">
-                                            <ul class="post-meta">
-                                                <li><i class="fa fa-user"></i>posted by <a
-                                                        href="index97ec.html?route=magikblog/article/view&amp;mgkblogarticle_id=7">admin</a>
-                                                </li>
-                                                <li><i class="fa fa-comments"></i><a
-                                                        href="index97ec.html?route=magikblog/article/view&amp;mgkblogarticle_id=7">0
-                                                        comments </a></li>
-                                                <li><i class="fa fa-calendar"></i>Aug 01, 2016</li>
-                                            </ul>
-                                            <h4 class="blog-preview_title"><a
-                                                    href="index97ec.html?route=magikblog/article/view&amp;mgkblogarticle_id=7">Aliquam
-                                                    eget sapien placerta</a></h4>
-
-
-                                            <div class="blog-preview_desc">Fusce ac pharetra urna. Duis non lacus
-                                                sit amet lacus interdum facilisis sed non est. Ut mi metus, semper
-                                                eu dictum nec, condimentum sed sapien. Nulla..</div>
-
-                                            <a class="blog-preview_btn"
-                                                href="index97ec.html?route=magikblog/article/view&amp;mgkblogarticle_id=7">Read
-                                                More</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 blog-preview_item">
-                                        <div class="entry-thumb image-hover2">
-                                            <a href="indexd694.html?route=magikblog/article/view&amp;mgkblogarticle_id=9">
-                                                <img src="{{ URL::to('/public/frontend/cache/catalog/furniture/blog-img3-915x420.jpg') }}"
-                                                    alt="Dolor lorem ipsum placerta"
-                                                    title="Dolor lorem ipsum placerta" /></a>
-                                        </div>
-                                        <div class="blog-preview_info">
-                                            <ul class="post-meta">
-                                                <li><i class="fa fa-user"></i>posted by <a
-                                                        href="indexd694.html?route=magikblog/article/view&amp;mgkblogarticle_id=9">admin</a>
-                                                </li>
-                                                <li><i class="fa fa-comments"></i><a
-                                                        href="indexd694.html?route=magikblog/article/view&amp;mgkblogarticle_id=9">0
-                                                        comments </a></li>
-                                                <li><i class="fa fa-calendar"></i>Aug 01, 2016</li>
-                                            </ul>
-                                            <h4 class="blog-preview_title"><a
-                                                    href="indexd694.html?route=magikblog/article/view&amp;mgkblogarticle_id=9">Dolor
-                                                    lorem ipsum placerta</a></h4>
-
-
-                                            <div class="blog-preview_desc">Fusce ac pharetra urna. Duis non lacus
-                                                sit amet lacus interdum facilisis sed non est. Ut mi metus, semper
-                                                eu dictum nec, condimentum sed sapien. Nulla..</div>
-
-                                            <a class="blog-preview_btn"
-                                                href="indexd694.html?route=magikblog/article/view&amp;mgkblogarticle_id=9">Read
-                                                More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

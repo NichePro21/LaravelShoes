@@ -70,15 +70,20 @@ class AdminController extends Controller
 	// 	return 	view('admin.manage_order')->with(compact('info'));
 	// }
     public function manage_order(){
-		$getorder = Order::orderby('order_id','DESC')->paginate(5);
-	
-
+		$getorder = Order::orderby('order_id','DESC')->paginate(20);
+		foreach($getorder as $key => $ord){
+			$order_code = $ord->order_code;
+			
+		}
+		$order_details_product = OrderDetails::with('product')->where('order_code', $order_code)->get();
+		
+		
 		
     //    $getorder = DB::table('tbl_order')
     //    ->join('tbl_shipping','tbl_order.shipping_id','tbl_shipping.shipping_id')
     //    ->join('tbl_order_details','tbl_order_details.order_code','tbl_order.order_code')
     //    ->join('tbl_customer','tbl_customer.CID','tbl_order.CID')->get();
-		return view('admin.manage_order')->with(compact('getorder'));
+		return view('admin.manage_order')->with(compact('getorder','order_details_product'));
 	}
     public function ViewOrder($order_code){
 		 $order_details = OrderDetails::with('product')->where('order_code',$order_code)->get();
@@ -110,7 +115,7 @@ class AdminController extends Controller
 		//send mail confirm
 		// $now = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y H:i:s');
 		// $title_mail = "Đơn hàng đã đặt được xác nhận".' '.$now;
-		 $customer = Customer::where('CID',$order->customer_id)->first();
+		 $customer = Customer::where('CID',$order->CID)->first();
 		// $data['email'][] = $customer->customer_email;
 
 		
@@ -231,6 +236,13 @@ class AdminController extends Controller
 
 		}
 
+
+	}
+	public function order_code(Request $request ,$order_code){
+		$order = Order::where('order_code',$order_code)->first();
+		$order->delete();
+		Session::put('message','Delete Order Success');
+		return redirect()->back();
 
 	}
     

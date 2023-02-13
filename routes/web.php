@@ -74,14 +74,14 @@ Route::post('/update-category-product/{category_id}', 'CategoryProduct@update_ca
 //Product
 
 Route::get('/admin/add-product', 'ProductController@add_product');
-Route::get('/edit-product/{product_id}', 'ProductController@edit_product');
-Route::get('/delete-product/{product_id}', 'ProductController@delete_product');
+Route::get('/admin/edit-product/{product_id}', 'ProductController@edit_product');
+Route::get('/admin/delete-product/{product_id}', 'ProductController@delete_product');
 Route::get('/admin/all-product', 'ProductController@all_product');
 Route::get('/unactive-product/{product_id}', 'ProductController@unactive_product');
 Route::get('/active-product/{product_id}', 'ProductController@active_product');
 
 Route::post('/save-product', 'ProductController@save_product');
-Route::post('/update-product/{product_id}', 'ProductController@update_product');
+Route::post('/admin/update-product/{product_id}', 'ProductController@update_product');
 
 //Cart
 Route::post('/add-cart-ajax','CartController@add_cart_ajax');
@@ -132,7 +132,12 @@ Route::get('/my-account/edit-address/shipping/', 'CustomerController@editShippin
 Route::get('/admin/view-order/{order_code}', 'AdminController@ViewOrder');
 Route::post('/update-order','AdminController@update_order_qty');
 Route::get('/admin/all-order','AdminController@manage_order');
+Route::get('/admin/delete-order/{order_code}','AdminController@order_code');
 // Route::get('/admin-view-order/{orderId}', 'CheckoutController@ViewOrder');
 
 //about Detail
 Route::get('/brand/{BID}','brandController@show_brand_home');
+
+
+//search
+Route::post('/search','HomeController@search');

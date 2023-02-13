@@ -10,7 +10,7 @@ class Brand extends Model
     protected $fillable = [
     	'brand_name', 'brand_slug', 'brand_desc','brand_status'
     ];
-    // protected $primaryKey = 'BID';
+     protected $primaryKey = 'BID';
  	protected $table = 'tbl_brand';
 
      public function product(){

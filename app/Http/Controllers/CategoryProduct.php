@@ -106,9 +106,9 @@ class CategoryProduct extends Controller
             $CatID = $cate->CatID;
         }
 
-        if(isset($_GET['sort_by'])){
+        if(isset($_GET['sort-by'])){
 
-            $sort_by = $_GET['sort_by'];
+            $sort_by = $_GET['sort-by'];
 
             if($sort_by=='giam_dan'){
 

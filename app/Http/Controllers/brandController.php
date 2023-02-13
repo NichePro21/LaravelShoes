@@ -82,7 +82,60 @@ class brandController extends Controller
         $brand_by_id = DB::table('tbl_product')->join('tbl_brand','tbl_product.BID','=','tbl_brand.BID')->where('tbl_brand.brand_slug',$brand_slug)->paginate(6);
         $brand_name = DB::table('tbl_brand')->where('tbl_brand.brand_slug',$brand_slug)->limit(1)->get();
         //print_r($brand_by_id);
-        return view('pages.sanpham.show_brand')->with('category',$cate_product)->with('brand_product',$brand_product)->with('brand_by_id',$brand_by_id)->with('brand_name',$brand_name);
+        $min_price = Product::min('product_price');
+        $max_price = Product::max('product_price');
+
+        $min_price_range = $min_price + 500000;
+        $max_price_range = $max_price + 10000000;
+        $brand_by_slug = Brand::where('brand_slug',$brand_slug)->get();
+        foreach($brand_by_slug as $key => $cate){
+            $BID = $cate->BID;
+        }
+
+        if(isset($_GET['sort-by'])){
+
+            $sort_by = $_GET['sort-by'];
+
+            if($sort_by=='giam_dan'){
+
+                $brand_by_slug = Product::with('brand')->where('BID',$BID)->orderBy('product_price','DESC')->paginate(6)->appends(request()->query());
+                
+            }elseif($sort_by=='tang_dan'){
+
+              $brand_by_slug = Product::with('brand')->where('BID',$BID)->orderBy('product_price','ASC')->paginate(6)->appends(request()->query());
+
+          }elseif($sort_by=='kytu_za'){
+
+           $brand_by_slug = Product::with('brand')->where('BID',$BID)->orderBy('product_name','DESC')->paginate(6)->appends(request()->query());
+
+
+       }elseif($sort_by=='kytu_az'){
+
+        $brand_by_slug = Product::with('brand')->where('BID',$BID)->orderBy('product_name','ASC')->paginate(6)->appends(request()->query());
+    }
+
+}elseif(isset($_GET['start_price']) && $_GET['end_price']){
+
+    $min_price = $_GET['start_price'];
+    $max_price = $_GET['end_price'];
+
+    $brand_by_slug = Product::with('brand')->whereBetween('product_price',[$min_price,$max_price])->orderBy('product_price','ASC')->paginate(6);
+
+}else{
+    $brand_by_slug = Product::with('brand')->where('BID',$BID)->orderBy('PID','DESC')->paginate(6);
+   
+}
+$brand_name = DB::table('tbl_brand')->where('tbl_brand.brand_slug',$brand_slug)->limit(1)->get();
+
+foreach($brand_name as $key => $val){
+    //seo 
+    $meta_desc = $val->brand_desc; 
+    $meta_keywords = $val->brand_desc;
+    $meta_title = $val->brand_name;
+    $url_canonical = $request->url();
+    //--seo
+}
+        return view('pages.sanpham.show_brand')->with('category',$cate_product)->with('brand_product',$brand_product)->with('brand_by_id',$brand_by_id)->with('brand_name',$brand_name)->with('brand_by_slug',$brand_by_slug);
     }
     
 }

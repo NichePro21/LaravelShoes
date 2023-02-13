@@ -1,12 +1,17 @@
 
 @extends('layout')
 @section('content')
-<div class="card py-3 mt-sm-3">
-    <div class="card-body text-center">
-      <h2 class="h4 pb-3">Thank you for your order!</h2>
-      <p class="fs-sm mb-2">Your order has been placed and will be processed as soon as possible.</p>
-      <p class="fs-sm mb-2">Make sure you make note of your order number, which is <span class="fw-medium">{{ Session::put('SeriNo')}}.</span></p>
-      <p class="fs-sm">You will be receiving an email shortly with confirmation of your order. <u>You can now:</u></p><a class="btn btn-secondary mt-3 me-3" href="/">Go back shopping</a>
-    </div>
+<div class="main-container col2-right-layout">
+  <div class="main container">
+    <div class="row">                <div id="content" class="col-sm-12">      <h1>Your order has been placed!</h1>
+        <p>Your order has been successfully processed!</p><p>You can view your order history by going to the <a href="/my-account">my account</a> page and by clicking on <a href="/my-account/orders">history</a>.</p><p>If your purchase has an associated download, you can go to the account <p>Please direct any questions you have to the .</p><p>Thanks for shopping with us online!</p>      <div class="buttons">
+          <div class="pull-right">
+            <!-- <a href="" class="btn btn-primary"></a> -->
+            <button onclick="window.location='/'" type="submit" class="button continue"> Continue </button>
+          </div>
+        </div>
+        </div>
+      </div>
+  </div>
   </div>
   @endsection

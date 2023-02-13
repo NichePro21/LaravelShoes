@@ -13,7 +13,7 @@
         <div class="col-lg-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Thêm Mới Sản Phẩm
+                        Add new Product
                     </header>
                     <div class="panel-body">
                         <?php 
@@ -27,7 +27,7 @@
                             <form role="form" action="{{URL::to('/save-product')}}" method="post" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Danh mục sản phẩm</label>
+                                    <label for="exampleInputPassword1">Category</label>
                                       <select name="product_cate" class="form-control input-sm m-bot15">
                                         @foreach($cate_product as $key => $cate)
                                             @if($cate->category_parent==0)
@@ -45,7 +45,7 @@
                                 </div>
                                
                                  <div class="form-group">
-                                    <label for="exampleInputPassword1">Thương hiệu</label>
+                                    <label for="exampleInputPassword1">Brand</label>
                                       <select name="product_brand" class="form-control input-sm m-bot15">
                                         @foreach($brand_product as $key => $brand)
                                             <option value="{{$brand->BID}}">{{$brand->brand_name}}</option>
@@ -54,26 +54,26 @@
                                     </select>
                                 </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Tên sản phẩm</label>
-                                <input type="text" data-validation="length" data-validation-length="min10" data-validation-error-msg="Làm ơn điền ít nhất 10 ký tự" name="product_name" class="form-control " id="slug" placeholder="Tên danh mục" onkeyup="ChangeToSlug();"> 
+                                <label for="exampleInputEmail1">Name Product</label>
+                                <input type="text" data-validation="length" data-validation-length="min10" data-validation-error-msg="Làm ơn điền ít nhất 10 ký tự" name="product_name" class="form-control" required id="slug" placeholder="Name" onkeyup="ChangeToSlug();"> 
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Size</label>
 
-                                <input type="text" data-role="tagsinput" name="product_size" class="form-control">
+                                <input type="text" data-role="tagsinput" name="product_size" class="form-control" required>
                                  
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Slug</label>
-                                <input type="text" name="product_slug" class="form-control " id="convert_slug" placeholder="Tên danh mục">
+                                <input type="text" name="product_slug" class="form-control " id="convert_slug" placeholder="slug" required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Giá bán</label>
-                                <input type="text" data-validation="length" data-validation-length="min5" data-validation-error-msg="Làm ơn điền số tiền" name="product_price" class="form-control price_format" id="" placeholder="Tên danh mục">
+                                <input type="text" data-validation="length" data-validation-length="min5" data-validation-error-msg="Làm ơn điền số tiền" name="product_price" class="form-control price_format" id="" required>
                             </div>
                              <div class="form-group">
                                 <label for="exampleInputEmail1">Giá gốc</label>
-                                <input type="text" data-validation="length" data-validation-length="min5" data-validation-error-msg="Làm ơn điền số tiền" name="price_cost" class="form-control price_format" id="" placeholder="Tên danh mục">
+                                <input type="text" data-validation="length" data-validation-length="min5" data-validation-error-msg="Làm ơn điền số tiền" name="price_cost" class="form-control price_format" id="" required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
@@ -82,26 +82,32 @@
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Tags sản phẩm</label>
 
-                                <input type="text" data-role="tagsinput" name="product_tags" class="form-control">
+                                <input type="text" data-role="tagsinput" name="product_tags" class="form-control" required>
+                                 
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Quantity</label>
+
+                                <input type="text" data-role="tagsinput" name="product_quantity" class="form-control" required>
                                  
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Mô tả sản phẩm</label>
-                                <textarea style="resize: none"  rows="8" class="form-control" name="product_desc" id="ckeditor1" placeholder="Mô tả sản phẩm"></textarea>
+                                <textarea style="resize: none"  rows="8" class="form-control" name="product_desc" id="ckeditor1" placeholder="Mô tả sản phẩm" required></textarea>
                             </div>
                              <div class="form-group">
                                 <label for="exampleInputPassword1">Nội dung sản phẩm</label>
-                                <textarea style="resize: none" rows="8" class="form-control" name="product_content"  id="my-editor" placeholder="Nội dung sản phẩm"></textarea>
+                                <textarea style="resize: none" rows="8" class="form-control" name="product_content"  id="my-editor" placeholder="Nội dung sản phẩm" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Hiển thị</label>
+                                <label for="exampleInputPassword1">Show/Hidden</label>
                                   <select name="product_status" class="form-control input-sm m-bot15">
-                                     <option value="0">Hiển thị</option>
-                                        <option value="1">Ẩn</option>
+                                     <option value="0">Show</option>
+                                        <option value="1">Hidden</option>
                                         
                                 </select>
                             </div>
-                            <button type="submit" name="add_category" class="btn btn-info">Thêm Sản Phẩm</button>
+                            <button type="submit" name="add_category" class="btn btn-info">Add Product</button>
                         </form>
                         </div>
 

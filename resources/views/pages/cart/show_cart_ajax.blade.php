@@ -119,10 +119,7 @@
                                 </div>
                                 <div style="margin-left:10px" class="pull-left">
                                     <!--  <a href="" class="btn btn-default"></a> -->
-                                    <button
-                                        onclick="window.location='/update-cart'"
-                                        class="button btn-continue" type="button"><span><span>Update
-                                                Quantity</span></span></button>
+                                   
                                 </div>
                                 <div class="pull-right">
                                     <!-- <a href="" class="btn btn-primary"></a> -->

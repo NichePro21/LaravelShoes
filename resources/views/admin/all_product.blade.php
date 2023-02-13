@@ -48,16 +48,16 @@
               <td>{{$product_pro->price_cost}}</td>
               <td>{{$product_pro->product_price}}</td>
               <td>{{$product_pro->product_size}}</td>
-              <td>{{$product_pro->color_quantity}}</td>
+              <td>{{$product_pro->product_quantity}}</td>
               <td><img src="{{URL::to('/public/uploads/product')}}/{{ $product_pro->product_image }}" height="100" width="100" alt=""></td>
               
              
               
               <td>
-                <a href="{{URL::to('/edit-product/'.$product_pro->PID)}}" class="editstyling active">
+                <a href="{{URL::to('/admin/edit-product/'.$product_pro->PID)}}" class="editstyling active">
                   <i class="fa fa-pencil text-success text-active"></i></a>
                   <hr>
-                  <a href="{{URL::to('/delete-product/'.$product_pro->PID)}}" class="deletestyling active" onclick="return confirm('Are you sure you want to delete this tag?')"><i
+                  <a href="{{URL::to('/admin/delete-product/'.$product_pro->PID)}}" class="deletestyling active" onclick="return confirm('Are you sure you want to delete this tag?')"><i
                   <i class="fa fa-times text-danger text"></i></a>
               </td>
             </tr>

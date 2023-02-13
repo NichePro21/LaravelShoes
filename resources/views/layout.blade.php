@@ -126,35 +126,10 @@
                                         <div class="check"><a href="/checkout" title="Checkout"><span
                                                     class="hidden-xs">Checkout</span></a></div>
                                         <div class="demo"> <a title="Blog"
-                                                href="indexe637.html?route=magikblog/article"><span
+                                                href="#"><span
                                                     class="hidden-xs">Blog</span></a></div>
                                         <!-- Header Company -->
-                                        <div class="dropdown block-company-wrapper hidden-xs"> <a role="button"
-                                                data-toggle="dropdown" data-target="#"
-                                                class="block-company dropdown-toggle" href="#"> Information
-                                                <span class="caret"></span></a>
-                                            <ul class="dropdown-menu">
-
-                                                <li role="presentation"><a
-                                                        href="index8816.html?route=information/information&amp;information_id=4">About
-                                                        Us</a></li>
-                                                <li role="presentation"><a
-                                                        href="index1766.html?route=information/information&amp;information_id=6">Delivery
-                                                        Information</a></li>
-                                                <li role="presentation"><a
-                                                        href="index1679.html?route=information/information&amp;information_id=3">Privacy
-                                                        Policy</a></li>
-                                                <li role="presentation"><a
-                                                        href="index99e4.html?route=information/information&amp;information_id=5">Terms
-                                                        &amp; Conditions</a></li>
-                                                <li role="presentation"><a
-                                                        href="index11cd.html?route=information/information&amp;information_id=7">Suppliers</a>
-                                                </li>
-                                                <li role="presentation"><a
-                                                        href="index7184.html?route=information/information&amp;information_id=8">Our
-                                                        Store</a></li>
-                                            </ul>
-                                        </div>
+                                     
                                         <!-- End Header Company -->
                                         <?php 
                          $customer_id = Session::get('CID');
@@ -204,27 +179,20 @@
                             <!-- search col -->
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                            <a href="indexe223.html?route=account/wishlist" title="My Wishlist"
-                                class="top-link-wishlist hidden-xs"><i class="fa fa-heart"></i></a>
                             <div class="top-cart-contain  pull-right">
                                 <!-- Top Cart -->
                                 <div class="mini-cart">
                                     <div id="cart">
 
-                                        <div data-hover="dropdown" class="basket dropdown-toggle"> <a
-                                                href="/show-cart"> <span
-                                                    class="cart_count">0</span> <span class="price hidden-xs">My Cart
-                                                    / $0.00</span> </a> </div>
+                                        {{-- <div data-hover="dropdown" class="basket dropdown-toggle"> <a
+                                                href="/show-cart"> <span class="price hidden-xs">My Cart</span> </a> </div>
+                                        <input id="cart-txt-heading" type="hidden" name="cart-txt-heading"
+                                            value="My Cart "> --}}
+                                            <div data-hover="dropdown" class="basket dropdown-toggle"> <a
+                                                href="/show-cart"> <span class="price hidden-xs">My Cart</span> </a> </div>
                                         <input id="cart-txt-heading" type="hidden" name="cart-txt-heading"
                                             value="My Cart ">
-
-                                        <ul class="dropdown-menu pull-right top-cart-content arrow_box">
-
-                                            <li>
-                                                <p class="text-center noitem">Your shopping cart is empty!</p>
-                                            </li>
-                                            
-                                        </ul>
+                                        
                                     </div>
                                 </div>
                                 <!-- Top Cart -->
@@ -444,73 +412,25 @@
                         <div class="col-xs-12 col-lg-4">
                             <div class="footer-column-last">
 
-                                <div class="newsletter-wrap">
-                                    <h4>SIGN UP FOR EMAILS</h4>
-                                    <input type="text" name="subscriber_email" id="subscriber_email"
-                                        value="" placeholder="Enter Your Email"
-                                        class="form-control input-text required-entry validate-email" />
-                                    <button class="subscribe" type="button" name="submit_newsletter"
-                                        id="submit_newsletter"
-                                        onclick="return MgkEmailValidation()"><span>Subscribe</span></button>
-                                    <p id="subscriber_content" class="required"></p>
-
-                                    <script>
-                                        function MgkEmailValidation(mail) {
-                                            subscribemail = document.getElementById("subscriber_email").value;
-                                            var emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-                                            if (subscribemail != '') {
-
-                                                if (subscribemail.search(emailRegEx) != -1) {
-
-
-                                                    email = document.getElementById("subscriber_email").value;
-                                                    var xmlhttp;
-                                                    if (window.XMLHttpRequest) {
-                                                        xmlhttp = new XMLHttpRequest();
-                                                    } else {
-                                                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                                                    }
-
-                                                    xmlhttp.onreadystatechange = function() {
-                                                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                                                            document.getElementById("subscriber_content").innerHTML = xmlhttp.responseText;
-                                                        }
-                                                    }
-                                                    xmlhttp.open("GET.html",
-                                                        "index9ea5.html?route=module/newslettersubscription/addsubscriberemail&amp;email=" + email, true
-                                                    );
-                                                    xmlhttp.send();
-                                                    return (true);
-                                                }
-                                                document.getElementById("subscriber_content").innerHTML = "Please enter an email address.";
-                                                return (false);
-                                            }
-                                            document.getElementById("subscriber_content").innerHTML = "This is a required field.";
-                                            return false;
-                                        }
-                                    </script>
-                                </div>
+                                
 
 
                                 <div class="social">
                                     <h4>Follow Us</h4>
                                     <ul>
-                                        <li class="fb pull-left"><a href="http://facebook.com/Magikcommerce"
+                                        <li class="fb pull-left"><a href="http://facebook.com/"
                                                 target="_blank"></a></li>
-                                        <li class="tw pull-left"><a href="http://twitter.com/qtwitt"
+                                        <li class="tw pull-left"><a href="http://twitter.com/"
                                                 target="_blank"></a></li>
                                         <li class="googleplus pull-left"><a href="http://www.magikcommerce.com/"
                                                 target="_blank"></a></li>
                                         <li class="rss pull-left"><a href="http://blog.magikcommerce.com/feed/"
                                                 target="_blank"></a></li>
                                         <li class="pintrest pull-left"><a
-                                                href="http://www.pinterest.com/magikcommerce/" target="_blank"></a>
+                                                href="http://www.pinterest.com/" target="_blank"></a>
                                         </li>
                                         <li class="linkedin pull-left"><a
-                                                href="http://www.linkedin.com/company/magikcommerce"
-                                                target="_blank"></a></li>
-                                        <li class="youtube pull-left"><a
-                                                href="https://plus.google.com/108548966199168316090/videos"
+                                                href="http://www.linkedin.com/"
                                                 target="_blank"></a></li>
                                     </ul>
                                 </div>
@@ -542,11 +462,11 @@
                         </div>
 
                         <address>
-                            <i class="fa fa-map-marker"></i>123 Main Street, Anytown, CA 12345 USA
+                            <i class="fa fa-map-marker"></i>FPT cach mang thang 8 , Tan Binh, Ho Chi Minh City
 
 
                             <i class="fa fa-mobile"></i>
-                            <span> +(408) 394-7557</span>
+                            <span> +(090) 39-3939</span>
 
 
                             <i class="fa fa-envelope"></i><span>

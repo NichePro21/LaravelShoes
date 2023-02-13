@@ -59,12 +59,12 @@ class CustomerController extends Controller
 
             Session::put('CID', $customer_id);
             Session::put('CName', $request->Cusername);
-            // if(Session::get('cart')){
-            //     return Redirect::to('/show-cart');
-            // }else{
-            //     return Redirect::to('/my-account');
-            // };
-        return Redirect::to('/my-account')->with('category', $cate_product)->with('brand_product', $brand_product);
+            if(Session::get('cart')){
+                return Redirect::to('/show-cart')->with('category', $cate_product)->with('brand_product', $brand_product);
+            }else{
+                return Redirect::to('/my-account')->with('category', $cate_product)->with('brand_product', $brand_product);
+            };
+        //return Redirect::to('/my-account')->with('category', $cate_product)->with('brand_product', $brand_product);
     }
     public function register(){
        // $this->AuthLogin();

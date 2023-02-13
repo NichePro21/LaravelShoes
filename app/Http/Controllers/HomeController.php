@@ -37,10 +37,34 @@ class HomeController extends Controller
         $product_by_brand = DB::table('tbl_brand')->join('tbl_product','tbl_product.BID','=','tbl_brand.BID')->limit(4)->get();
 
         $galery_product = DB::table('tbl_product')->orderby('PID','desc')->limit(1)->get();
+        $bestseller = Product::orderBy('product_sold', 'DESC')->get();
+
         //$brand_tabs = Brand::orderBy('BID', 'DESC')->get();
-        return view('pages.home')->with('category', $cate_product)->with('galery_product',$galery_product)->with('brand_product', $brand_product)->with('brand', $brand)->with('all_product', $all_product)->with('product_by_brand',$product_by_brand);
+        return view('pages.home')->with('bestseller', $bestseller)->with('category', $cate_product)->with('galery_product',$galery_product)->with('brand_product', $brand_product)->with('brand', $brand)->with('all_product', $all_product)->with('product_by_brand',$product_by_brand);
     }
-    
+    public function search(Request $request){
+        //category post
+        //$category_post = CatePost::orderBy('cate_post_id','DESC')->get();
+         //slide
+        //$slider = Slider::orderBy('slider_id','DESC')->where('slider_status','1')->take(4)->get();
+
+        //seo 
+        // $meta_desc = "Tìm kiếm sản phẩm"; 
+        // $meta_keywords = "Tìm kiếm sản phẩm";
+        // $meta_title = "Tìm kiếm sản phẩm";
+        // $url_canonical = $request->url();
+        //--seo
+        $keywords = $request->keywords_submit;
+
+        $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get(); 
+        $brand_product = DB::table('tbl_brand')->where('brand_status','0')->orderby('brand_id','desc')->get(); 
+
+        $search_product = DB::table('tbl_product')->where('product_name','like','%'.$keywords.'%')->get(); 
+
+
+        return view('pages.sanpham.search')->with('category',$cate_product)->with('brand',$brand_product)->with('search_product',$search_product);
+
+    }
 
 
 }

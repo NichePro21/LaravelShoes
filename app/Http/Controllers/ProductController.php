@@ -85,8 +85,9 @@ class ProductController extends Controller
     public function save_product(Request $request)
     {
         $this->AuthLogin();
-        $data = array();
-
+    	$data = array();
+        // $cate_product = DB::table('tbl_category_product')->orderby('category_id','desc')->get(); 
+        // $brand_product = DB::table('tbl_brand')->orderby('brand_id','desc')->get(); 
         $product_price = filter_var($request->product_price, FILTER_SANITIZE_NUMBER_INT);
         $price_cost = filter_var($request->price_cost, FILTER_SANITIZE_NUMBER_INT);
 
@@ -97,6 +98,7 @@ class ProductController extends Controller
         $data['product_slug'] = $request->product_slug;
         $data['product_price'] = $request->product_price;
         $data['product_size'] = $request->product_size;
+        $data['product_quantity'] = $request->product_quantity;
         $data['product_desc'] = $request->product_desc;
         $data['product_content'] = $request->product_content;
         $data['CatID'] = $request->product_cate;
@@ -128,8 +130,8 @@ class ProductController extends Controller
         $gallery->product_id = $pro_id;
         $gallery->save();
 
-        Session::put('message', 'Thêm sản phẩm thành công');
-        return Redirect::to('add-product');
+        Session::put('message', 'Add Product Success');
+        return Redirect::to('/admin/add-product');
     }
     public function unactive_product($product_id)
     {
@@ -147,44 +149,59 @@ class ProductController extends Controller
     {
         $this->AuthLogin();
         $cate_product = DB::table('tbl_categories')->orderby('CatID', 'desc')->get();
+        $brand_product = DB::table('tbl_brand')->orderby('BID','desc')->get(); 
         $tag_product = DB::table('tbl_brand')->orderby('BID', 'desc')->get();
 
         $edit_product = DB::table('tbl_product')->where('PID', $product_id)->get();
-        $manager_product = view('admin.edit_product')->with('edit_product', $edit_product)->with('cate_product', $cate_product)->with('tag_product', $tag_product);
+        $manager_product = view('admin.edit_product')->with('brand_product',$brand_product)->with('edit_product', $edit_product)->with('cate_product', $cate_product)->with('tag_product', $tag_product);
 
         return view('admin_layout')->with('admin.edit_product', $manager_product);
     }
     public function update_product(Request $request, $product_id)
     {
-        $data = array();
-        $data['BID'] = $request->BID;
-        $data['CatID'] = $request->CatID;
-        $data['PName'] = $request->PName;
-        $data['PCost'] = $request->PCost;
-        $data['PPrice'] = $request->PPrice;
-        $data['PSize'] = $request->PSize;
-        $data['PStock'] = $request->PStock;
-        $get_image = $request->file('PPhoto');
+        $this->AuthLogin();
+    	$data = array();
+        
+        $data['product_name'] = $request->product_name;
+        $data['price_cost'] = $request->price_cost;
+        $data['product_tags'] = $request->product_tags;
+        // $data['product_quantity'] = $request->product_quantity;
+        $data['product_slug'] = $request->product_slug;
+        $data['product_price'] = $request->product_price;
+        $data['product_size'] = $request->product_size;
+        $data['product_quantity'] = $request->product_quantity;
+        $data['product_desc'] = $request->product_desc;
+        $data['product_content'] = $request->product_content;
+        $data['CatID'] = $request->product_cate;
+        $data['BID'] = $request->product_brand;
+        $data['product_status'] = $request->product_status;
+        $data['product_image'] = $request->product_status;
 
+        $get_image = $request->file('product_image');
+
+        $path = 'public/uploads/product/';
+        $path_gallery = 'public/uploads/product/';
+        //them hinh anh
         if ($get_image) {
-            //$get_name_image = $get_image->getClientOriginalExtension();
-            $new_image = $data['PName'] . '.' . $get_image->getClientOriginalExtension();
-            $get_image->move('public/uploads/product', $new_image);
-            $data['PPhoto'] = $new_image;
-            DB::table('tbl_product')->where('PID', $product_id)->update($data);
-            Session::put('message', 'Cập Nhật Sản Phẩm Thành Công!');
-            return Redirect::to('all-product');
+
+            $get_name_image = $get_image->getClientOriginalName();
+            $name_image = current(explode('.', $get_name_image));
+            $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
+            $get_image->move($path, $new_image);
+            File::copy($path . $new_image, $path_gallery . $new_image);
+            $data['product_image'] = $new_image;
+
         }
         DB::table('tbl_product')->where('PID', $product_id)->update($data);
-        Session::put('message', 'Cập Nhật Sản Phẩm Thành Công!');
-        return Redirect::to('all-product');
+        Session::put('message', 'Update Product Success');
+        return Redirect::to('/admin/all-product');
 
     }
     public function delete_product($product_id)
     {
         DB::table('tbl_product')->where('PID', $product_id)->delete();
-        Session::put('message', 'Xóa Thành Công');
-        return Redirect::to('all-product');
+        Session::put('message', 'Delete Product Success');
+        return Redirect::to('/admin/all-product');
     }
     //END ADMIN PAGES TABLE
 
@@ -302,5 +319,6 @@ class ProductController extends Controller
 
 
     }
+
 
 }

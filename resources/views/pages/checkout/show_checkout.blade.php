@@ -8,6 +8,13 @@
         border: 1px solid #ccc;
         border-radius: 3px;
       }
+      .row input[type=email] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
       .shipping-addressnew{
         display: none;
       }
@@ -22,6 +29,15 @@
             <div id="content" class="col-sm-12">
                 <h1>Checkout</h1>
                 <div class="panel panel-default">
+                    <?php
+                    $message = Session::get('message');
+                    if ($message) {
+                        
+                        echo '<div class="alert success">  
+                  <strong>Please!</strong> '.$message.'</div>';
+                        Session::put('message', null);
+                    }
+                    ?>
                     <div class="panel-heading">
                         <h4 class="panel-title"><a href="#collapse-shipping-address" data-toggle="collapse"
                                 data-parent="#accordion" class="accordion-toggle collapsed" aria-expanded="false"><span
@@ -55,17 +71,17 @@
                                                 <div class="col-50">
                                                   <h3>Shipping Address</h3><br>
                                                   <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                                                  <input type="text" id="newfullname" name="newfullname" placeholder="Name" required>
+                                                  <input type="text" id="newfullname" name="newfullname" placeholder="Name" >
                                                   <label for="adr"><i class="fa fa-institution" aria-hidden="true"></i> Address</label>
-                                                  <input type="text" id="newAddress" name="newAddress" placeholder="28 Cach mang thang 8" required>
+                                                  <input type="text" id="newAddress" name="newAddress" placeholder="28 Cach mang thang 8" >
                                                   <label for="city"><i class="fa fa-institution" ></i> Ward</label>
-                                                  <input type="text" id="newWard" name="newWard" placeholder="Ward" required>
+                                                  <input type="text" id="newWard" name="newWard" placeholder="Ward" >
                                                   <label for="city"><i class="fa fa-institution"></i> City</label>
-                                                  <input type="text" id="newCity" name="newCity" placeholder="Ho Chi Minh City" required>
-                                                  <label for="city"><i class="fa fa-envelope-o"></i>Email</label>
-                                                  <input type="text" id="newEmail" name="newEmail" placeholder="Ho Chi Minh City" required>
+                                                  <input type="text" id="newCity" name="newCity" placeholder="Ho Chi Minh City" >
+                                                  <label for="city"><i class="fa fa-envelope-o"></i>Email</label><br>
+                                                  <input type="Email" id="newEmail" name="newEmail" placeholder="Ho Chi Minh City" ><br>
                                                   <label for="city"><i class="fa fa-phone" aria-hidden="true"></i>Telephone</label>
-                                                  <input type="text" id="newPhone" name="newPhone" placeholder="Ho Chi Minh City" required>
+                                                  <input type="text" id="newPhone" name="newPhone" placeholder="Ho Chi Minh City" >
                                                 </div>
                                         </div>
 

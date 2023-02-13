@@ -3,7 +3,7 @@
 <div class="form-w3layouts">
     <div class="row bg-title">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Update Product Layouts</h4> </div>
+            <h4 class="page-title">Add Product</h4> </div>
         
         <!-- /.col-lg-12 -->
     </div>
@@ -13,7 +13,7 @@
         <div class="col-lg-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Sửa Sản Phẩm
+                        Add new Product
                     </header>
                     <div class="panel-body">
                         <?php 
@@ -23,66 +23,100 @@
             Session::put('message',null);
     }
     ?>
+    @foreach($edit_product as $key => $pro)
                         <div class="position-center">
-                            @foreach($edit_product as $key => $value)
-                            <form role="form" action="{{URL::to('/update-product/')}}/{{$value->PID}}" method="post" enctype="multipart/form-data">
+                            <form role="form" action="{{URL::to('/admin/update-product')}}/{{$pro->PID}}" method="post" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <div class="form-group">
-                                    <label for="exampleInputFile">Danh Mục</label>
-                                        <select name="CatID" class="form-control input-lg m-bot15">
-                                            @foreach ($cate_product as $key => $cate)
-                                            @if ($cate->CatID == $value->CatID)
-                                            <option selected value="{{$cate->CatID}}">{{$cate->CateName}}</option>
-                                            @else
-                                            <option value="{{$cate->CatID}}">{{$cate->CateName}}</option>
-                                            @endif
-                                            @endforeach
-                                        </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputFile">Tag</label>
-                                        <select name="BID" class="form-control input-lg m-bot15">
-                                            @foreach ($tag_product as $key => $tag)
-                                            @if ($tag->BID == $value->BID)
-                                            <option selected value="{{$tag->BID}}">{{$tag->BName}}</option>
-                                            @else
-                                            <option value="{{$tag->BID}}">{{$tag->BName}}</option>
-                                            @endif
-                                            @endforeach
-    
-                                        </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="PName">Tên Sản Phẩm</label>
-                                    <input type="text" class="form-control" name="PName" value="{{$value->PName}}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="PCost">Giá Vốn</label>
-                                    <input type="text" class="form-control" name="PCost" value="{{$value->PCost}}" >
-                                </div>
-                                <div class="form-group">
-                                    <label for="PPrice">Giá Bán</label>
-                                    <input type="text" class="form-control" name="PPrice" value="{{$value->PPrice}}" >
-                                </div>
-                                <div class="form-group">
-                                    <label for="PSize">Size</label>
-                                    <input type="text" class="form-control" name="PSize" value="{{$value->PSize}}" >
-                                </div>
-                                <div class="form-group">
-                                    <label for="PStock">Số Lượng Tồn Kho : </label><b>{{$value->PStock}}</b>
-                                    <input class="form-control" name="PStock" value="{{$value->PStock}}" >
-                                </div>
-                                <div class="form-group">
-                                    <label for="PPhoto">Hình Ảnh</label> : <b>Nếu không chỉnh sửa sẽ giữ nguyên ảnh gốc</b>
-                                    <input type="file" class="form-control" name="PPhoto" value="{{$value->PPhoto}}"  >
-                                </div>
-                            <button type="submit" name="add_category" class="btn btn-info">Cập Nhật Danh Mục</button>
-                        </form>
-                        @endforeach
-                        </div>
+                                    <label for="exampleInputPassword1">Category</label>
+                                      <select name="product_cate" class="form-control input-sm m-bot15">
+                                        @foreach($cate_product as $key => $cate)
+                                            @if($cate->category_parent==0)
+                                                <option style="font-size: 15px" value="{{$cate->CatID}}">{{$cate->category_name}}</option>
+                                                @foreach($cate_product as $key => $cate_sub)
+                                                    @if($cate_sub->category_parent!=0 && $cate_sub->category_parent==$cate->CatID)
+                                                    <option style="color: red;font-size: 15px" value="{{$cate_sub->CatID}}">---{{$cate_sub->category_name}}</option>   
+                                                    @endif
+                                                @endforeach
 
+                                            @endif
+                                        @endforeach
+                                            
+                                    </select>
+                                </div>
+                               
+                                 <div class="form-group">
+                                    <label for="exampleInputPassword1">Brand</label>
+                                      <select name="product_brand" class="form-control input-sm m-bot15">
+                                        @foreach($brand_product as $key => $brand)
+                                            <option value="{{$brand->BID}}">{{$brand->brand_name}}</option>
+                                        @endforeach
+                                            
+                                    </select>
+                                </div>
+                                
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Name Product</label>
+                                <input type="text" data-validation="length" value="{{$pro->product_name}}" data-validation-length="min10" data-validation-error-msg="Làm ơn điền ít nhất 10 ký tự" name="product_name" class="form-control" required id="slug" placeholder="Name" onkeyup="ChangeToSlug();"> 
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Size</label>
+
+                                <input type="text" data-role="tagsinput" value="{{$pro->product_size}}" name="product_size" class="form-control" required>
+                                 
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Slug</label>
+                                <input type="text" name="product_slug" value="{{$pro->product_slug}}" class="form-control" id="convert_slug" placeholder="slug" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Giá bán</label>
+                                <input type="text" data-validation="length" data-validation-length="min5" value="{{$pro->product_price}}" data-validation-error-msg="Làm ơn điền số tiền" name="product_price" class="form-control price_format" id="" required>
+                            </div>
+                             <div class="form-group">
+                                <label for="exampleInputEmail1">Giá gốc</label>
+                                <input type="text" data-validation="length" data-validation-length="min5" value="{{$pro->price_cost}}" data-validation-error-msg="Làm ơn điền số tiền" name="price_cost" class="form-control price_format" id="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
+                                <input type="file" name="product_image" class="form-control" id="exampleInputEmail1">
+                                <img src="{{URL::to('public/uploads/product/'.$pro->product_image)}}" height="100" width="100">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Tags sản phẩm</label>
+
+                                <input type="text" data-role="tagsinput" name="product_tags" value="{{$pro->product_tags}}" class="form-control" required>
+                                 
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Quantity</label>
+
+                                <input type="text" data-role="tagsinput" name="product_quantity" value="{{$pro->product_quantity}}" class="form-control" required>
+                                 
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Mô tả sản phẩm</label>
+                                <textarea style="resize: none"  rows="8" class="form-control" value="{{$pro->product_desc}}" name="product_desc" id="ckeditor1" required>{{$pro->product_desc}}</textarea>
+                            </div>
+                             <div class="form-group">
+                                <label for="exampleInputPassword1">Nội dung sản phẩm</label>
+                                <textarea style="resize: none" rows="8" class="form-control" value="{{$pro->product_content}}" name="product_content"  id="my-editor" required>{{$pro->product_content}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Show/Hidden</label>
+                                  <select name="product_status" class="form-control input-sm m-bot15">
+                                     <option value="0">Show</option>
+                                        <option value="1">Hidden</option>
+                                        
+                                </select>
+                            </div>
+                            <button type="submit" name="add_category" class="btn btn-info">Add Product</button>
+                        </form>
+                        </div>
+@endforeach
                     </div>
                 </section>
 
         </div>
+        
 @endsection

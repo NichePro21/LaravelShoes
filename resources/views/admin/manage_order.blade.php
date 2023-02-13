@@ -7,6 +7,15 @@
   <!-- /.col-lg-12 -->
 </div>
 <div class="white-box">
+  <?php
+  $message = Session::get('message');
+  if ($message) {
+      
+      echo '<div class="alert success">  
+<strong>Success!</strong> '.$message.'</div>';
+      Session::put('message', null);
+  }
+  ?>
   <h3 class="box-title m-b-0">Order Table </h3>
   <div class="table-responsive">
       <table class="table">
@@ -27,14 +36,13 @@
           @endphp
             @foreach($getorder as $key => $ord)
             @php 
-            print_r($ord);
+            //print_r($ord);
             $i++;
             @endphp
-              @php  
-                $amount = $ord->product_price * $ord->product_sales_quantity;
-              
-              @endphp
+             
+             
               <tr>
+                
                   <td><a href="javascript:void(0)">Order #{{$ord->order_id}}</a></td>
                   <td><a href="javascript:void(0)">{{$ord->order_code}}</a></td>
                  
@@ -54,12 +62,14 @@
                   {{$ord->order_destroy}}
                   @endif
                 </td>
+                
                  <td class="text-nowrap">
                     <a href="/admin/view-order/{{$ord->order_code}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
                     <a href="{{URL::to('/admin/delete-order/'.$ord->order_code)}}" onclick="return confirm('Delete Order #{{$ord->order_id}}?')" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a>
                 </td>
-                
+              
               </tr>
+             
               @endforeach
           </tbody>
       </table>
