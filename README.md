@@ -12,11 +12,20 @@
 Install my-project with npm
 
 ```bash
-  cd my-project
+  cd your-project
   git clone https://github.com/NichePro21/LaravelShoes.git
 ```
 
     
+## Deployment
+
+To deploy this project run
+
+```bash
+  DB: https://drive.google.com/file/d/16Jy2vrXAr84U93tq7aEDyBm3oj6Tywv7/view?usp=sharing
+```
+
+
 ## Authors
 
 - [@NichePro21](http://github.com/NichePro21/LaravelShoes)
