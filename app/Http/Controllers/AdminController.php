@@ -36,7 +36,7 @@ class AdminController extends Controller
         $admin_password = md5($request->admin_password);
 
         $result = DB::table('tbl_admin')->where('admin_email', $admin_email)->where('admin_password', $admin_password)->first();
-      
+
         if ($result){
             Session::put('admin_name', $result->admin_name);
             Session::put('admin_id', $result->admin_id);
@@ -53,32 +53,16 @@ class AdminController extends Controller
         Session::put('admin_id', null);
         return Redirect::to('/admin');
     }
-    //admin check order
-    // public function order_details(){
-    //     //$this->AuthLogin();
-    //     $all_order = DB::table('masterorder')
-    //     ->join('tbl_customer','tbl_customer.CID','=','masterorder.CID')
-    //     ->select('masterorder.*','tbl_customer.CName')
-    //     ->orderby('masterorder.OrderNo','desc')->get();
-    //     $manager_order = view('staff.order_list')->with('all_order',$all_order);
-
-    //     return view('staff_layout')->with('staff.order_list',$manager_order);
-
-    // }
-	// public function getcus($CID){
-	// 	$info = DB::table('tbl_customer')->where('CID',$CID);
-	// 	return 	view('admin.manage_order')->with(compact('info'));
-	// }
     public function manage_order(){
 		$getorder = Order::orderby('order_id','DESC')->paginate(20);
 		foreach($getorder as $key => $ord){
 			$order_code = $ord->order_code;
-			
+
 		}
 		$order_details_product = OrderDetails::with('product')->where('order_code', $order_code)->get();
-		
-		
-		
+
+
+
     //    $getorder = DB::table('tbl_order')
     //    ->join('tbl_shipping','tbl_order.shipping_id','tbl_shipping.shipping_id')
     //    ->join('tbl_order_details','tbl_order_details.order_code','tbl_order.order_code')
@@ -101,8 +85,8 @@ class AdminController extends Controller
             // ->join('tbl_shipping','tbl_order.shipping_id','tbl_shipping.shipping_id')
             // ->join('tbl_order_details','tbl_order_details.order_code',$order_code)
             // ->join('tbl_customer','tbl_customer.CID','tbl_order.CID')->get();
-	
-		
+
+
 		return view('admin.order_detail')->with(compact('order_details','customer','shipping','getorder','order_status'));
 
 	}
@@ -118,9 +102,9 @@ class AdminController extends Controller
 		 $customer = Customer::where('CID',$order->CID)->first();
 		// $data['email'][] = $customer->customer_email;
 
-		
+
 	  	//lay san pham
-	  	
+
 		// foreach($data['order_product_id'] as $key => $product){
 		// 		$product_mail = Product::find($product);
 		// 		foreach($data['quantity'] as $key2 => $qty){
@@ -137,7 +121,7 @@ class AdminController extends Controller
 		// 	}
 		// }
 
-		
+
 	  	//lay shipping
 	  	$details = OrderDetails::where('order_code',$order->order_code)->first();
 
@@ -145,7 +129,7 @@ class AdminController extends Controller
 		//$coupon_mail = $details->product_coupon;
 
 	  	$shipping = Shipping::where('shipping_id',$order->shipping_id)->first();
-	  	
+
 		$shipping_array = array(
 			//'fee_ship' =>  $fee_ship,
 			'customer_name' => $customer->customer_name,
@@ -170,14 +154,14 @@ class AdminController extends Controller
 
 
 		//order date
-		$order_date = $order->order_date;	
-		
+		$order_date = $order->order_date;
+
 		$statistic = Statistic::where('order_date',$order_date)->get();
 		if($statistic){
-			$statistic_count = $statistic->count();	
+			$statistic_count = $statistic->count();
 		}else{
 			$statistic_count = 0;
-		}	
+		}
 
 		if($order->order_status==2){
 			//them
@@ -245,6 +229,6 @@ class AdminController extends Controller
 		return redirect()->back();
 
 	}
-    
+
 }
 

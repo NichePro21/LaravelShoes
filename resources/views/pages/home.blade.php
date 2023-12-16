@@ -60,7 +60,7 @@
                                                 data-bgrepeat='no-repeat' />
 
                                             <div class="info">
-                                              
+
                                                 <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500'
                                                     data-speed='500' data-start='1500' data-easing='Linear.easeNone'
                                                     data-splitin='none' data-splitout='none' data-elementdelay='0.1'
@@ -276,12 +276,12 @@
                                         </ul>
                                     </div>
                                 </div>
-                                
+
                                 <div class="product-bestseller">
                                     <div class="product-bestseller-content">
                                    <div class="product-bestseller-list">
                                              <div class="tab-container">
-                                             
+
                                                <div class="tab-panel active" id="tab-1">
                                                     <div class="category-products">
                                                       <ul class="products-grid active" id="tabs_product">
@@ -506,7 +506,7 @@
                                                                     data-original-title="Add to Cart"
                                                                     class="button btn-cart link-cart add-to-oncart" data-id_product="{{ $product->PID }}"><span>Add to
                                                                         Cart</span></button>
-                                                                        
+
                                                                     {{-- onclick="Addtocart('{{ $product->PID }}');" --}}
                                                             </div>
                                                         </div>
@@ -523,11 +523,11 @@
                     </div> <!-- slider Item products -->
                 </div>
             </section>
-        
+
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        
+
                     </div>
                 </div>
             </div>
@@ -550,31 +550,31 @@
                             },
                     success:function(data){
                         $('#tabs_product').html(data);
-                       
+
                     }
-    
-                }); 
+
+                });
             $('.tabs_pro').click(function(){
-    
+
                 var cate_id = $(this).data('id');
                  //alert(cate_id);
                 var _token = $('input[name="_token"]').val();
-                
+
                 $.ajax({
-                    
+
                     url:'{{url('/product-tabs')}}',
-                    method:"POST",  
+                    method:"POST",
                      data: {
                             "_token": "{{ csrf_token() }}",
                             "cate_id": cate_id
                             },
-                        
+
                     success:function(data){
                         $('#tabs_product').html(data);
                     }
-    
-                }); 
-    
+
+                });
+
             });
         });
     </script>
